@@ -1,0 +1,9 @@
+role 'Region Oslo'
+	modelPermission: read
+
+	tablePermission 'Customer Current' = 'Customer Current'[region] = "Oslo"
+
+	tablePermission DIM_CUSTOMER = DIM_CUSTOMER[is_current] = TRUE () && DIM_CUSTOMER[region] = "Oslo"
+
+	annotation PBI_Id = 00f72623911b43a9995ef506631b9805
+

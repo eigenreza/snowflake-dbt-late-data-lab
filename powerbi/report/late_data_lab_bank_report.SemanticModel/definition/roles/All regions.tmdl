@@ -1,0 +1,5 @@
+role 'All regions'
+	modelPermission: read
+
+	annotation PBI_Id = 9bc57eb85ba94b038723f82edf914fc2
+

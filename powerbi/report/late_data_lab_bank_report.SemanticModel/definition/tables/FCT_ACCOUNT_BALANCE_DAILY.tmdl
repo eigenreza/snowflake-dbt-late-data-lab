@@ -1,0 +1,73 @@
+table FCT_ACCOUNT_BALANCE_DAILY
+	lineageTag: d1f8586e-acd9-40e5-8a04-af7a200c5c0a
+
+	column account_no
+		dataType: string
+		lineageTag: 4052abb1-7ce2-494e-a8d4-a32e4c9fb0d8
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NO
+
+		annotation SummarizationSetBy = User
+
+	column customer_id
+		dataType: double
+		isHidden
+		lineageTag: fa73c5f5-9945-49a7-a151-91df7d4befd9
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column balance_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 7a4ee120-b937-4f6a-b14d-608f4400ad5a
+		summarizeBy: none
+		sourceColumn: BALANCE_DATE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column balance_nok
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 69946183-9807-4c3f-8757-d621dd7ed1a1
+		summarizeBy: sum
+		sourceColumn: BALANCE_NOK
+
+		annotation SummarizationSetBy = User
+
+	column net_flow_nok
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 491e58bf-4360-47b3-86a5-4ccd6832d74f
+		summarizeBy: sum
+		sourceColumn: NET_FLOW_NOK
+
+		annotation SummarizationSetBy = User
+
+	column txn_count
+		dataType: double
+		formatString: #,0
+		lineageTag: 9e0d270a-0d1c-40ad-915e-43bbf006f3c5
+		summarizeBy: sum
+		sourceColumn: TXN_COUNT
+
+		annotation SummarizationSetBy = User
+
+	partition FCT_ACCOUNT_BALANCE_DAILY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "FCT_ACCOUNT_BALANCE_DAILY", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

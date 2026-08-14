@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "59cd1fe1c4df45c38ff5",
+  "position": {
+    "x": 980,
+    "y": 700,
+    "z": 7,
+    "height": 340,
+    "width": 900,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CURRENCY"
+                    }
+                  },
+                  "Property": "currency_code"
+                }
+              },
+              "queryRef": "DIM_CURRENCY.currency_code",
+              "nativeQueryRef": "currency_code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CURRENCY"
+                    }
+                  },
+                  "Property": "currency_name"
+                }
+              },
+              "queryRef": "DIM_CURRENCY.currency_name",
+              "nativeQueryRef": "currency_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CURRENCY"
+                    }
+                  },
+                  "Property": "latest_rate_nok"
+                }
+              },
+              "queryRef": "DIM_CURRENCY.latest_rate_nok",
+              "nativeQueryRef": "latest_rate_nok"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CURRENCY"
+                    }
+                  },
+                  "Property": "latest_rate_date"
+                }
+              },
+              "queryRef": "DIM_CURRENCY.latest_rate_date",
+              "nativeQueryRef": "latest_rate_date"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DIM_CURRENCY"
+                  }
+                },
+                "Property": "currency_code"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Latest rates'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

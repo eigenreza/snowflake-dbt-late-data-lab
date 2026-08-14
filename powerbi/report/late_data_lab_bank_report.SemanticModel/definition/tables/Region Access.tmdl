@@ -1,0 +1,29 @@
+table 'Region Access'
+	lineageTag: 914d1cac-790c-4e51-bbe0-a5288736284e
+
+	column user_principal_name
+		dataType: string
+		lineageTag: 3089dcfc-6138-49fe-a4ca-2d61b41477af
+		summarizeBy: none
+		sourceColumn: user_principal_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 6b074dcd-5c23-4ee7-a35e-4c11623c2cff
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Region Access' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [user_principal_name = text, region = text], {{"vestland.manager@example.com", "Vestland"}, {"oslo.manager@example.com", "Oslo"}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,60 @@
+table DIM_CURRENCY
+	lineageTag: 81b4cb4f-7583-4acf-bc48-b85f92939bb1
+
+	column currency_code
+		dataType: string
+		lineageTag: a5ab2020-38eb-4c84-8465-601f1dbbf243
+		summarizeBy: none
+		sourceColumn: CURRENCY_CODE
+
+		annotation SummarizationSetBy = User
+
+	column currency_name
+		dataType: string
+		lineageTag: c4839859-d5ed-4ed3-9361-a8b2f069acf0
+		summarizeBy: none
+		sourceColumn: CURRENCY_NAME
+
+		annotation SummarizationSetBy = User
+
+	column is_home_currency
+		dataType: boolean
+		lineageTag: 577d2cf9-8624-41e0-a00c-01b79d9e2ed1
+		summarizeBy: none
+		sourceColumn: IS_HOME_CURRENCY
+
+		annotation SummarizationSetBy = User
+
+	column latest_rate_nok
+		dataType: double
+		formatString: 0.000000
+		lineageTag: ea7ced50-646a-4b4c-985b-53cc737f225b
+		summarizeBy: none
+		sourceColumn: LATEST_RATE_NOK
+
+		annotation SummarizationSetBy = User
+
+	column latest_rate_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: cfff4869-6395-48a0-81a8-e3d6e7a8d60e
+		summarizeBy: none
+		sourceColumn: LATEST_RATE_DATE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition DIM_CURRENCY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "DIM_CURRENCY", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

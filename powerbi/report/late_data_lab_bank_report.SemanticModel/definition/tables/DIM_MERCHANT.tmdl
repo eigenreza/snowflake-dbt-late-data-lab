@@ -1,0 +1,92 @@
+table DIM_MERCHANT
+	lineageTag: ee9212c3-a0ca-4787-9a22-5d1fd3abfee9
+
+	column merchant_id
+		dataType: double
+		isHidden
+		lineageTag: a9c8c80c-79cb-495d-b6a1-6e9dcaf39dd6
+		summarizeBy: none
+		sourceColumn: MERCHANT_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column merchant_name
+		dataType: string
+		lineageTag: ca2cff1c-2fa4-44f2-a01b-6acece250350
+		summarizeBy: none
+		sourceColumn: MERCHANT_NAME
+
+		annotation SummarizationSetBy = User
+
+	column category_code
+		dataType: string
+		lineageTag: fd24a679-31fe-4154-8111-4cb84d629e75
+		summarizeBy: none
+		sourceColumn: CATEGORY_CODE
+
+		annotation SummarizationSetBy = User
+
+	column category_name
+		dataType: string
+		lineageTag: 834472bc-59ef-441d-a099-4709a737ebc6
+		summarizeBy: none
+		sourceColumn: CATEGORY_NAME
+
+		annotation SummarizationSetBy = User
+
+	column category_group
+		dataType: string
+		lineageTag: 30ee7bb2-a74a-44ae-87cb-62fcce4a3ca1
+		summarizeBy: none
+		sourceColumn: CATEGORY_GROUP
+
+		annotation SummarizationSetBy = User
+
+	column country_code
+		dataType: string
+		lineageTag: f11ff7ae-f684-4008-8400-1a9d5e9d1126
+		summarizeBy: none
+		sourceColumn: COUNTRY_CODE
+
+		annotation SummarizationSetBy = User
+
+	column is_domestic
+		dataType: boolean
+		lineageTag: 7736cfbc-380e-4ceb-a4b3-2776b9776139
+		summarizeBy: none
+		sourceColumn: IS_DOMESTIC
+
+		annotation SummarizationSetBy = User
+
+	column city
+		dataType: string
+		lineageTag: 8a464bc9-ee3b-4295-ab28-dfcb321c32f6
+		summarizeBy: none
+		sourceColumn: CITY
+
+		annotation SummarizationSetBy = User
+
+	column source_updated_at
+		dataType: dateTime
+		isHidden
+		lineageTag: cb77ef06-eac8-4143-8e2e-156936f6677c
+		summarizeBy: none
+		sourceColumn: SOURCE_UPDATED_AT
+
+		annotation SummarizationSetBy = User
+
+	partition DIM_MERCHANT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "DIM_MERCHANT", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

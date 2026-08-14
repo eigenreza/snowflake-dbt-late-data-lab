@@ -1,0 +1,9 @@
+role 'Region Vestland'
+	modelPermission: read
+
+	tablePermission 'Customer Current' = 'Customer Current'[region] = "Vestland"
+
+	tablePermission DIM_CUSTOMER = DIM_CUSTOMER[is_current] = TRUE () && DIM_CUSTOMER[region] = "Vestland"
+
+	annotation PBI_Id = 2636ec0ea89b4021b45d2d79e59543f3
+

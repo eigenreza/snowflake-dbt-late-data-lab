@@ -1,0 +1,317 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: Calendar dimension, one row per day from the start of the FX history to a month past the last replay day.
+    columns:
+      - name: date_day
+        description: The calendar day, the primary key.
+        data_tests: [unique, not_null]
+      - name: year
+      - name: quarter
+      - name: month
+      - name: month_start
+        description: First day of the month, the key used by the monthly report.
+      - name: year_month
+        description: Label such as 2024-12.
+      - name: day_of_month
+      - name: iso_day_of_week
+        description: 1 for Monday through 7 for Sunday.
+      - name: is_weekend
+
+  - name: dim_currency
+    description: Currencies in the ledger with the latest published rate against NOK for reference.
+    columns:
+      - name: currency_code
+        data_tests: [unique, not_null]
+      - name: currency_name
+      - name: is_home_currency
+      - name: latest_rate_nok
+        description: Most recent published rate; 1 for NOK.
+      - name: latest_rate_date
+
+  - name: dim_customer
+    description: >
+      Customer dimension, slowly changing type 2. One row per customer version as recorded by the
+      snapshot, with the date range in which it applied. Facts join on customer_id and booking date to
+      find the version of the day; the current version carries is_current. On Snowflake the regional
+      row access policy is attached to this table.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [customer_id, valid_from]
+    columns:
+      - name: customer_sk
+        description: Surrogate key of the customer version.
+        data_tests: [unique, not_null]
+      - name: customer_id
+        description: Customer id in the core system; the same across versions.
+        data_tests: [not_null]
+      - name: customer_no
+      - name: first_name
+      - name: last_name
+      - name: full_name
+      - name: birth_date
+      - name: segment
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Standard', 'Premium', 'Student', 'Private Banking']
+      - name: region
+        description: County the customer lived in during this version.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('regions')
+                field: region
+      - name: area
+        description: Larger area the region belongs to.
+      - name: street
+      - name: postal_code
+      - name: city
+      - name: customer_since
+      - name: valid_from
+        description: First day this version applies; 1900-01-01 for the first version.
+        data_tests: [not_null]
+      - name: valid_to
+        description: Day the next version starts (exclusive); 9999-12-31 for the current one.
+        data_tests: [not_null]
+      - name: is_current
+        description: True for the newest version of each customer.
+      - name: version_no
+        description: 1 for the first recorded version, counting up.
+      - name: version_started_at
+        description: Source update time at which the snapshot opened this version.
+      - name: version_ended_at
+        description: Source update time at which the snapshot closed it; null while current.
+
+  - name: dim_account
+    description: "Account dimension, type 1: the current state of every account."
+    columns:
+      - name: account_no
+        data_tests: [unique, not_null]
+      - name: customer_id
+        description: Owning customer.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('int_customers_current')
+                field: customer_id
+      - name: account_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['CURRENT', 'SAVINGS']
+      - name: open_date
+        data_tests: [not_null]
+      - name: close_date
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['OPEN', 'CLOSED']
+      - name: opening_balance
+        description: Balance in NOK on the opening day, before any transaction.
+        data_tests: [not_null]
+      - name: credit_limit
+        description: Overdraft limit in NOK. The core system declines a debit that would take the balance below minus this amount, so no balance in the snapshot is lower.
+        data_tests: [not_null]
+      - name: source_updated_at
+
+  - name: dim_card
+    description: Card dimension, type 1.
+    columns:
+      - name: card_id
+        data_tests: [unique, not_null]
+      - name: account_no
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_no
+      - name: masked_pan
+      - name: issued_date
+      - name: expiry_date
+      - name: status
+      - name: source_updated_at
+
+  - name: dim_merchant
+    description: Merchant dimension, type 1, with the category code, name and reporting group.
+    columns:
+      - name: merchant_id
+        data_tests: [unique, not_null]
+      - name: merchant_name
+        data_tests: [not_null]
+      - name: category_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('merchant_categories')
+                field: category_code
+      - name: category_name
+        data_tests: [not_null]
+      - name: category_group
+      - name: country_code
+        data_tests: [not_null]
+      - name: is_domestic
+        description: True for merchants in Norway.
+      - name: city
+      - name: source_updated_at
+
+  - name: fct_transactions
+    description: >
+      Transaction fact, one row per transaction in its latest delivered state. Amounts are signed from
+      the account's point of view (debits negative) and converted to NOK at the booking date's rate.
+      A corrected transaction keeps its id and is_corrected; a reversal is its own row pointing at the
+      transaction it reverses. The incremental behaviour follows the load_strategy variable.
+    columns:
+      - name: txn_id
+        description: Transaction id, the primary key.
+        data_tests: [unique, not_null]
+      - name: account_no
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_no
+      - name: customer_id
+        description: Owner of the account.
+        data_tests: [not_null]
+      - name: customer_sk
+        description: Customer version that applied on the booking date.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_sk
+      - name: card_id
+        description: Card used; card purchases only.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_card')
+                field: card_id
+      - name: merchant_id
+        description: Merchant; card purchases and bill payments only.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_merchant')
+                field: merchant_id
+      - name: txn_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['CARD_PURCHASE', 'BILL_PAYMENT', 'TRANSFER_IN', 'TRANSFER_OUT', 'ATM_WITHDRAWAL', 'FEE', 'SALARY', 'INTEREST']
+      - name: event_date
+        description: Booking date.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: amount
+        description: Signed amount in the transaction currency.
+        data_tests: [not_null]
+      - name: currency
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_currency')
+                field: currency_code
+      - name: fx_rate_nok
+        description: Rate applied; 1 for NOK.
+        data_tests: [not_null]
+      - name: amount_nok
+        description: Signed amount in NOK, rounded to the cent.
+        data_tests: [not_null]
+      - name: status
+      - name: reversal_of
+        description: Id of the reversed transaction, for reversal rows.
+      - name: is_reversal
+      - name: is_corrected
+        description: True when the core system changed the row after it was first written.
+      - name: source_created_at
+      - name: source_updated_at
+      - name: extract_day
+        description: Extract day that delivered the version in use.
+      - name: loaded_at
+
+  - name: fct_account_balance_daily
+    description: >
+      Periodic snapshot fact: the end-of-day balance in NOK of every open account for every day,
+      computed as the opening balance plus the cumulative net flow from fct_transactions. Because a
+      balance depends on every earlier day, an incremental run recomputes the whole window from the
+      stored balance of the day before it.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [account_no, balance_date]
+    columns:
+      - name: account_no
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_no
+      - name: customer_id
+        data_tests: [not_null]
+      - name: balance_date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: balance_nok
+        description: End-of-day balance.
+        data_tests: [not_null]
+      - name: net_flow_nok
+        description: Sum of the day's transactions in NOK.
+      - name: txn_count
+        description: Number of transactions booked that day.
+
+  - name: mart_monthly_category_region
+    description: >
+      Monthly transaction value and count by merchant category and customer region, in NOK. This is
+      the rewrite of the old nightly reporting job with the same grain and columns: card purchases and
+      bill payments, spend as a positive value, region as the customer's current region. The
+      reconciliation script compares it with the old job. On Snowflake the regional row access policy
+      is attached to this table.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [report_month, category_code, region]
+    columns:
+      - name: report_month
+        description: First day of the month.
+        data_tests: [not_null]
+      - name: category_code
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('merchant_categories')
+                field: category_code
+      - name: region
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('regions')
+                field: region
+      - name: value_nok
+        description: Spend in NOK, positive; reversals net out.
+        data_tests: [not_null]
+      - name: txn_count
+        data_tests: [not_null]

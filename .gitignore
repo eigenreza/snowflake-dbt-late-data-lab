@@ -1,0 +1,43 @@
+# Private working space
+_admin/
+
+# Secrets and credentials (.env.example is the documented template and stays public)
+.env
+.env.local
+*.pem
+*.p8
+profiles.yml
+.streamlit/secrets.toml
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Local databases and landed files
+*.duckdb
+*.duckdb.wal
+*.db
+landing/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Power BI project: the local data cache and the machine-specific settings stay out
+powerbi/report/**/.pbi/cache.abf
+powerbi/report/**/.pbi/localSettings.json

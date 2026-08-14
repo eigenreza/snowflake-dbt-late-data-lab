@@ -1,0 +1,114 @@
+// Measures for the bank report. Table names follow the MARTS schema; adjust if you renamed them.
+// Amounts are signed from the account's point of view: debits negative, credits positive.
+
+// ---------- Volume and value ----------
+
+Transaction Volume =
+COUNTROWS ( FCT_TRANSACTIONS )
+
+Transaction Value NOK =
+SUM ( FCT_TRANSACTIONS[amount_nok] )
+
+// Spend: what customers paid out, shown as a positive number. Reversals net out.
+Spend NOK =
+CALCULATE (
+    -1 * SUM ( FCT_TRANSACTIONS[amount_nok] ),
+    FCT_TRANSACTIONS[txn_type] IN { "CARD_PURCHASE", "BILL_PAYMENT", "ATM_WITHDRAWAL", "FEE" }
+)
+
+Inflow NOK =
+CALCULATE (
+    SUM ( FCT_TRANSACTIONS[amount_nok] ),
+    FCT_TRANSACTIONS[txn_type] IN { "SALARY", "TRANSFER_IN", "INTEREST" }
+)
+
+Average Transaction NOK =
+DIVIDE ( [Spend NOK], CALCULATE ( [Transaction Volume], FCT_TRANSACTIONS[txn_type] IN { "CARD_PURCHASE", "BILL_PAYMENT", "ATM_WITHDRAWAL", "FEE" } ) )
+
+// ---------- Customers ----------
+
+Active Customers =
+DISTINCTCOUNT ( FCT_TRANSACTIONS[customer_id] )
+
+Customers =
+COUNTROWS ( 'Customer Current' )
+
+Customers Who Moved =
+CALCULATE ( DISTINCTCOUNT ( DIM_CUSTOMER[customer_id] ), DIM_CUSTOMER[version_no] > 1 )
+
+// ---------- Balances ----------
+
+// Average of the end-of-day balances in the period, over the accounts in scope.
+Average Balance NOK =
+AVERAGE ( FCT_ACCOUNT_BALANCE_DAILY[balance_nok] )
+
+// Balance on the last day of the period in scope.
+Closing Balance NOK =
+VAR LastDay = MAX ( FCT_ACCOUNT_BALANCE_DAILY[balance_date] )
+RETURN
+    CALCULATE ( SUM ( FCT_ACCOUNT_BALANCE_DAILY[balance_nok] ), FCT_ACCOUNT_BALANCE_DAILY[balance_date] = LastDay )
+
+// ---------- Time comparison ----------
+
+Spend NOK Previous Month =
+CALCULATE ( [Spend NOK], DATEADD ( DIM_DATE[date_day], -1, MONTH ) )
+
+Spend MoM Change % =
+DIVIDE ( [Spend NOK] - [Spend NOK Previous Month], [Spend NOK Previous Month] )
+
+Transaction Volume Previous Month =
+CALCULATE ( [Transaction Volume], DATEADD ( DIM_DATE[date_day], -1, MONTH ) )
+
+Volume MoM Change % =
+DIVIDE ( [Transaction Volume] - [Transaction Volume Previous Month], [Transaction Volume Previous Month] )
+
+// ---------- Currency ----------
+
+Foreign Currency Spend NOK =
+CALCULATE ( [Spend NOK], FCT_TRANSACTIONS[currency] <> "NOK" )
+
+Foreign Currency Share % =
+DIVIDE ( [Foreign Currency Spend NOK], [Spend NOK] )
+
+Average FX Rate Used =
+AVERAGEX ( FILTER ( FCT_TRANSACTIONS, FCT_TRANSACTIONS[currency] <> "NOK" ), FCT_TRANSACTIONS[fx_rate_nok] )
+
+// ---------- KPI error versus the truth ----------
+// Needs the table 'Truth Monthly' (report_month, category_code, region, value_nok, txn_count)
+// from demo/data/truth_monthly.parquet, related to DIM_DATE on report_month.
+
+Report Value NOK =
+SUM ( MART_MONTHLY_CATEGORY_REGION[value_nok] )
+
+Truth Value NOK =
+SUM ( 'Truth Monthly'[value_nok] )
+
+KPI Error NOK =
+[Report Value NOK] - [Truth Value NOK]
+
+KPI Error % =
+DIVIDE ( ABS ( [KPI Error NOK] ), [Truth Value NOK] )
+
+// Share of month-category-region cells whose value differs by more than half a cent.
+// The truth table and the report share only the date table, so each truth cell carries its
+// three keys over to the report with TREATAS; a cell missing from the report counts as wrong.
+// Adding zero turns the blank of an empty count into 0 %.
+KPI Cells Wrong % =
+VAR TruthCells =
+    SUMMARIZE ( 'Truth Monthly', 'Truth Monthly'[report_month], 'Truth Monthly'[category_code], 'Truth Monthly'[region] )
+VAR Compared =
+    ADDCOLUMNS (
+        TruthCells,
+        "@truth", CALCULATE ( SUM ( 'Truth Monthly'[value_nok] ) ),
+        "@report",
+            CALCULATE (
+                SUM ( MART_MONTHLY_CATEGORY_REGION[value_nok] ),
+                TREATAS ( { 'Truth Monthly'[report_month] }, MART_MONTHLY_CATEGORY_REGION[report_month] ),
+                TREATAS ( { 'Truth Monthly'[category_code] }, MART_MONTHLY_CATEGORY_REGION[category_code] ),
+                TREATAS ( { 'Truth Monthly'[region] }, MART_MONTHLY_CATEGORY_REGION[region] )
+            )
+    )
+VAR Wrong =
+    COUNTROWS ( FILTER ( Compared, ABS ( [@report] - [@truth] ) > 0.005 ) )
+RETURN
+    DIVIDE ( Wrong + 0, COUNTROWS ( TruthCells ) )

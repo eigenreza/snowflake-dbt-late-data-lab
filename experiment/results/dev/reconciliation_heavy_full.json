@@ -1,0 +1,20 @@
+{
+  "mode": "full",
+  "run_date": "2024-12-30",
+  "old_rows": 7918,
+  "new_rows": 7918,
+  "keys_in_both": 7918,
+  "keys_only_in_old": 0,
+  "keys_only_in_new": 0,
+  "value_sum_old": 1589926154.52,
+  "value_sum_new": 1589926154.52,
+  "count_sum_old": 1037428,
+  "count_sum_new": 1037428,
+  "keys_with_value_difference": 0,
+  "keys_with_count_difference": 0,
+  "max_abs_value_difference": 0.0,
+  "matches": true,
+  "differing_keys": [],
+  "differing_months": [],
+  "month_totals": []
+}

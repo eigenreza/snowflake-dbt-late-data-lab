@@ -1,0 +1,181 @@
+table 'Customer Current'
+	lineageTag: e18fbdd8-49a3-4f53-886f-f7fde381cc78
+
+	column customer_id
+		lineageTag: 6b7f1e0a-6dae-4437-873b-4b9392357492
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[customer_id]
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_no
+		lineageTag: e8b1e0cc-a3dc-4ba8-8bdd-d29eeb3ff30f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[customer_no]
+
+		annotation SummarizationSetBy = User
+
+	column first_name
+		lineageTag: 6800b929-9520-4d1c-90c5-ab3efdb1100e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[first_name]
+
+		annotation SummarizationSetBy = User
+
+	column last_name
+		lineageTag: e48d51cf-194e-4020-8e9f-c6e0d6556da3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[last_name]
+
+		annotation SummarizationSetBy = User
+
+	column full_name
+		lineageTag: 337f9d85-f5fb-4af6-a15d-be681f89eb43
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[full_name]
+
+		annotation SummarizationSetBy = User
+
+	column birth_date
+		formatString: yyyy-mm-dd
+		lineageTag: b0d95241-007c-42ec-8e11-86132dea9fbb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[birth_date]
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column segment
+		lineageTag: c80b34b8-bf2b-44ec-a818-03bc422c5c68
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[segment]
+
+		annotation SummarizationSetBy = User
+
+	column region
+		lineageTag: 5d0f7740-e2b0-405b-a73c-4fc775b4706c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[region]
+
+		annotation SummarizationSetBy = User
+
+	column area
+		lineageTag: 9ea729d1-e702-4816-8f34-21fbcdc0f110
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[area]
+
+		annotation SummarizationSetBy = User
+
+	column street
+		lineageTag: 2078416d-48a2-4aa9-9ffe-0e5dfa12958e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[street]
+
+		annotation SummarizationSetBy = User
+
+	column postal_code
+		lineageTag: e686a328-7dcd-4f35-bb15-55a79985dc2a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[postal_code]
+
+		annotation SummarizationSetBy = User
+
+	column city
+		lineageTag: b83d4eb0-b166-4145-b5b8-d183fc131660
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[city]
+
+		annotation SummarizationSetBy = User
+
+	column customer_since
+		formatString: yyyy-mm-dd
+		lineageTag: 36ff0e1e-14c1-4070-a915-be4d84aa96d7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[customer_since]
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_from
+		formatString: yyyy-mm-dd
+		lineageTag: b6db0bf3-40bf-40f5-89ef-4aea79683fb9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[valid_from]
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		formatString: yyyy-mm-dd
+		lineageTag: ce826ad5-fcea-458f-b58e-6b4b80f50e27
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[valid_to]
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		lineageTag: 4d1dc868-2532-4be6-8853-8a7e14ad11ef
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[is_current]
+
+		annotation SummarizationSetBy = User
+
+	column version_no
+		formatString: 0
+		lineageTag: a4eeda50-debe-4b0b-9fc6-3ffba81dc930
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[version_no]
+
+		annotation SummarizationSetBy = User
+
+	column version_started_at
+		lineageTag: 47b64579-17cd-47b6-9797-503a60416da1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[version_started_at]
+
+		annotation SummarizationSetBy = User
+
+	column version_ended_at
+		lineageTag: a8a26798-9971-438f-935d-05937ce244c7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[version_ended_at]
+
+		annotation SummarizationSetBy = User
+
+	column customer_sk
+		lineageTag: acf5ec3a-feab-4cb4-840f-4fb3ad13ef5e
+		isNameInferred
+		sourceColumn: DIM_CUSTOMER[customer_sk]
+
+	partition 'Customer Current' = calculated
+		mode: import
+		source = FILTER ( DIM_CUSTOMER, DIM_CUSTOMER[is_current] = TRUE () )
+
+	annotation PBI_ResultType = CalculatedTable
+

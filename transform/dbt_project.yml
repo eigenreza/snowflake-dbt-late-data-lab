@@ -1,0 +1,49 @@
+name: late_data_lab
+version: "1.0.0"
+config-version: 2
+
+profile: late_data_lab
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - target
+  - dbt_packages
+
+# Experiment switches. The harness overrides these with --vars for each run.
+vars:
+  load_strategy: full_refresh   # full_refresh | append_only | merge | delete_insert
+  lookback_days: 0              # lookback window W in days for merge and delete_insert
+  as_of_date: null              # last replay day being built, YYYY-MM-DD; null means newest booking date
+  query_tag: late_data_lab
+  calendar_start: "2022-12-01"  # date spine for dim_date and the FX calendar
+  calendar_end: "2025-01-31"
+
+on-run-start:
+  - "{{ disable_result_cache() }}"
+  - "{{ set_run_query_tag() }}"
+
+models:
+  late_data_lab:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts
+
+snapshots:
+  late_data_lab:
+    +schema: marts
+
+seeds:
+  late_data_lab:
+    +schema: staging

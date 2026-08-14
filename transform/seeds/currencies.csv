@@ -1,0 +1,5 @@
+currency_code,currency_name,is_home_currency
+NOK,Norwegian krone,true
+EUR,Euro,false
+USD,US dollar,false
+SEK,Swedish krona,false

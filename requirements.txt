@@ -1,0 +1,14 @@
+dbt-core<2
+dbt-duckdb<2
+dbt-snowflake<2
+duckdb<3
+matplotlib<4
+numpy<3
+pandas<4
+plotly<8
+pyarrow
+pytest<10
+python-dotenv<2
+PyYAML<7
+requests<3
+streamlit<2

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b97e51c8427a4c32a4d9",
+  "position": {
+    "x": 980,
+    "y": 140,
+    "z": 3,
+    "height": 440,
+    "width": 900,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_MERCHANT"
+                    }
+                  },
+                  "Property": "category_name"
+                }
+              },
+              "queryRef": "DIM_MERCHANT.category_name",
+              "nativeQueryRef": "category_name"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Spend NOK"
+                }
+              },
+              "queryRef": "Bank Measures.Spend NOK",
+              "nativeQueryRef": "Spend NOK"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Transaction Volume"
+                }
+              },
+              "queryRef": "Bank Measures.Transaction Volume",
+              "nativeQueryRef": "Transaction Volume"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Average Transaction NOK"
+                }
+              },
+              "queryRef": "Bank Measures.Average Transaction NOK",
+              "nativeQueryRef": "Average Transaction NOK"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Bank Measures"
+                  }
+                },
+                "Property": "Spend NOK"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categories'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

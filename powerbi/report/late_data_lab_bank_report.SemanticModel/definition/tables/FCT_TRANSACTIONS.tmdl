@@ -1,0 +1,202 @@
+table FCT_TRANSACTIONS
+	lineageTag: 12ec1357-bd11-48c9-81b2-1c0713acdcbd
+
+	column txn_id
+		dataType: double
+		isHidden
+		lineageTag: e889d087-efd1-456e-8513-cc26f967d5e9
+		summarizeBy: none
+		sourceColumn: TXN_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column account_no
+		dataType: string
+		lineageTag: 91d8233e-144d-4f1c-a40c-e03df96000de
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NO
+
+		annotation SummarizationSetBy = User
+
+	column customer_id
+		dataType: double
+		isHidden
+		lineageTag: e37c3c64-b1e3-4ca2-816f-28fb0658078c
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_sk
+		dataType: string
+		isHidden
+		lineageTag: 5839eb86-4020-4ff7-b7d1-63d7b8031a23
+		summarizeBy: none
+		sourceColumn: CUSTOMER_SK
+
+		annotation SummarizationSetBy = User
+
+	column card_id
+		dataType: string
+		lineageTag: f6aba914-a4ea-4dbe-8790-2f8408be301d
+		summarizeBy: none
+		sourceColumn: CARD_ID
+
+		annotation SummarizationSetBy = User
+
+	column merchant_id
+		dataType: double
+		isHidden
+		lineageTag: 07e6896d-c78b-4f69-9982-f4698a5c9901
+		summarizeBy: none
+		sourceColumn: MERCHANT_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column txn_type
+		dataType: string
+		lineageTag: 19b2746f-6803-4ce7-a9bd-cc732be99d1e
+		summarizeBy: none
+		sourceColumn: TXN_TYPE
+
+		annotation SummarizationSetBy = User
+
+	column event_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 3bf8820a-6378-4ba5-9823-09d803b3b29b
+		summarizeBy: none
+		sourceColumn: EVENT_DATE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column amount
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 64758fd5-0f01-4b4d-a7ee-8ca58d6f2e31
+		summarizeBy: sum
+		sourceColumn: AMOUNT
+
+		annotation SummarizationSetBy = User
+
+	column currency
+		dataType: string
+		lineageTag: 768bd8bd-f2dd-48cb-b133-97c2aa9304ea
+		summarizeBy: none
+		sourceColumn: CURRENCY
+
+		annotation SummarizationSetBy = User
+
+	column fx_rate_nok
+		dataType: double
+		formatString: 0.000000
+		lineageTag: a72c8a82-1255-4ba5-a436-946adace9d67
+		summarizeBy: none
+		sourceColumn: FX_RATE_NOK
+
+		annotation SummarizationSetBy = User
+
+	column amount_nok
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 9526c5ab-1c37-4694-a1e6-9df8dbaa27b3
+		summarizeBy: sum
+		sourceColumn: AMOUNT_NOK
+
+		annotation SummarizationSetBy = User
+
+	column status
+		dataType: string
+		lineageTag: abe09a03-bc12-418f-bd39-721cd41f29e5
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = User
+
+	column reversal_of
+		dataType: double
+		isHidden
+		lineageTag: 3379eb85-2e0f-444e-a498-c306c8192bd5
+		summarizeBy: none
+		sourceColumn: REVERSAL_OF
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_reversal
+		dataType: boolean
+		lineageTag: 0acd9a8a-ccbc-4c35-9a85-5648201622d9
+		summarizeBy: none
+		sourceColumn: IS_REVERSAL
+
+		annotation SummarizationSetBy = User
+
+	column is_corrected
+		dataType: boolean
+		lineageTag: ff1f9e37-e6b8-45d5-be89-019c3411c5c6
+		summarizeBy: none
+		sourceColumn: IS_CORRECTED
+
+		annotation SummarizationSetBy = User
+
+	column source_created_at
+		dataType: dateTime
+		isHidden
+		lineageTag: 851a61f2-bfe7-49b3-9c27-25da3260d879
+		summarizeBy: none
+		sourceColumn: SOURCE_CREATED_AT
+
+		annotation SummarizationSetBy = User
+
+	column source_updated_at
+		dataType: dateTime
+		isHidden
+		lineageTag: db97d29e-e746-4bb5-8411-e66a2329ede8
+		summarizeBy: none
+		sourceColumn: SOURCE_UPDATED_AT
+
+		annotation SummarizationSetBy = User
+
+	column extract_day
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 107e14a7-ba08-40dc-830a-804e3fc7c5e2
+		summarizeBy: none
+		sourceColumn: EXTRACT_DAY
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column loaded_at
+		dataType: dateTime
+		isHidden
+		lineageTag: f3fbf1b9-d1bd-45fd-9dd5-d147f698bb24
+		summarizeBy: none
+		sourceColumn: LOADED_AT
+
+		annotation SummarizationSetBy = User
+
+	partition FCT_TRANSACTIONS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "FCT_TRANSACTIONS", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

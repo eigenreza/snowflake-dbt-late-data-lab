@@ -1,0 +1,40 @@
+relationship 3f77c77a-4afd-477f-b27a-bc3355756c7e
+	fromColumn: FCT_TRANSACTIONS.customer_sk
+	toColumn: DIM_CUSTOMER.customer_sk
+
+relationship b26147df-b2bf-4e27-b105-0c24b4930d81
+	fromColumn: FCT_TRANSACTIONS.account_no
+	toColumn: DIM_ACCOUNT.account_no
+
+relationship 90cc282a-441f-44da-8baf-6556be372fd5
+	fromColumn: FCT_TRANSACTIONS.merchant_id
+	toColumn: DIM_MERCHANT.merchant_id
+
+relationship 2e2957c5-764b-4110-8185-35e62582e4e6
+	fromColumn: FCT_TRANSACTIONS.event_date
+	toColumn: DIM_DATE.date_day
+
+relationship bd593fda-93ac-46e8-8663-ad4d0992baf3
+	fromColumn: FCT_TRANSACTIONS.currency
+	toColumn: DIM_CURRENCY.currency_code
+
+relationship 0294b1df-aaab-42cf-b8c8-ee78920bea75
+	fromColumn: FCT_ACCOUNT_BALANCE_DAILY.account_no
+	toColumn: DIM_ACCOUNT.account_no
+
+relationship 6227d6b9-4b99-408f-a341-dd614447d857
+	fromColumn: FCT_ACCOUNT_BALANCE_DAILY.balance_date
+	toColumn: DIM_DATE.date_day
+
+relationship 226ed341-2598-4b06-9947-a6cfda09ace0
+	fromColumn: DIM_ACCOUNT.customer_id
+	toColumn: 'Customer Current'.customer_id
+
+relationship c55c5c58-3fc0-412a-8b5b-ec1a7e92e19f
+	fromColumn: MART_MONTHLY_CATEGORY_REGION.report_month
+	toColumn: DIM_DATE.date_day
+
+relationship 7c1f3a2e-5b64-4d2a-9e51-0d3c8a6f1b27
+	fromColumn: 'Truth Monthly'.report_month
+	toColumn: DIM_DATE.date_day
+

@@ -1,0 +1,7 @@
+role 'Regional manager'
+	modelPermission: read
+
+	tablePermission 'Customer Current' = 'Customer Current'[region] IN CALCULATETABLE ( VALUES ( 'Region Access'[region] ), 'Region Access'[user_principal_name] = USERPRINCIPALNAME () )
+
+	annotation PBI_Id = 98bca4fbefcf41ea9f9dc2b25570ea8c
+

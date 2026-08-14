@@ -1,0 +1,5 @@
+streamlit<2
+plotly<8
+pandas<4
+pyarrow
+numpy<3

@@ -1,0 +1,11 @@
+snapshots:
+  - name: snap_customers
+    description: >
+      Slowly changing history of the customer master data, type 2. Every time the core system delivers
+      a customer with a newer update time, the previous row is closed and a new one opened, so a move
+      between regions or a change of segment is kept with the dates it applied.
+    relation: ref('int_customers_current')
+    config:
+      unique_key: customer_id
+      strategy: timestamp
+      updated_at: updated_at

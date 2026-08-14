@@ -1,0 +1,15 @@
+expression SnowflakeServer = "<organization>-<account>.snowflakecomputing.com" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 9a23c440-1d09-4de4-98a3-34db4c46374c
+
+	annotation PBI_ResultType = Text
+
+expression SnowflakeRole = "REPORTER" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 489f7e3f-7604-437d-99e7-9a8d83b395d7
+
+	annotation PBI_ResultType = Text
+
+expression DataFolder = "C:\snowflake-dbt-late-data-lab\demo\data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 5832c7d6-e92e-4450-a349-65e4a94a957d
+
+	annotation PBI_ResultType = Text
+

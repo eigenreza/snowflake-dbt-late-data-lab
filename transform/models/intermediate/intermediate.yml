@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: int_customers_current
+    description: The newest delivered version of every customer; the source the SCD2 snapshot watches.
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+
+  - name: int_accounts_current
+    description: The newest delivered version of every account.
+    columns:
+      - name: account_no
+        data_tests: [unique, not_null]
+
+  - name: int_cards_current
+    description: The newest delivered version of every card.
+    columns:
+      - name: card_id
+        data_tests: [unique, not_null]
+
+  - name: int_merchants_current
+    description: The newest delivered version of every merchant.
+    columns:
+      - name: merchant_id
+        data_tests: [unique, not_null]
+
+  - name: int_fx_rates_daily
+    description: >
+      One rate per calendar day and currency over the whole calendar. Days without a publication
+      (weekends, Norwegian holidays) carry the last published rate forward, which is the bank's own
+      convention for converting a transaction booked on such a day.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [rate_date, currency]
+    columns:
+      - name: rate_date
+        description: Calendar day.
+        data_tests: [not_null]
+      - name: currency
+        data_tests: [not_null]
+      - name: rate_nok
+        description: NOK per one unit of the currency on that day.
+        data_tests: [not_null]
+      - name: is_published
+        description: True when Norges Bank published a rate on this day, false when it was carried forward.
+      - name: published_on
+        description: Publication date of the rate in use.

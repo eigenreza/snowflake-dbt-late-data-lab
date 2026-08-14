@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "4446ed24cc8d4a5db41e",
+  "position": {
+    "x": 1450,
+    "y": 140,
+    "z": 6,
+    "height": 150,
+    "width": 430,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Average Balance NOK"
+                }
+              },
+              "queryRef": "Bank Measures.Average Balance NOK",
+              "nativeQueryRef": "Average Balance NOK"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

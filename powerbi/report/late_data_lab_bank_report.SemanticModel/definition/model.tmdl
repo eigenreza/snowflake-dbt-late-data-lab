@@ -1,0 +1,35 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["FCT_TRANSACTIONS","FCT_ACCOUNT_BALANCE_DAILY","DIM_CUSTOMER","DIM_ACCOUNT","DIM_MERCHANT","DIM_DATE","DIM_CURRENCY","MART_MONTHLY_CATEGORY_REGION","Truth Monthly","Region Access","Bank Measures","SnowflakeServer","SnowflakeRole","DataFolder"]
+
+ref table FCT_TRANSACTIONS
+ref table FCT_ACCOUNT_BALANCE_DAILY
+ref table DIM_CUSTOMER
+ref table DIM_ACCOUNT
+ref table DIM_MERCHANT
+ref table DIM_DATE
+ref table DIM_CURRENCY
+ref table MART_MONTHLY_CATEGORY_REGION
+ref table 'Truth Monthly'
+ref table 'Region Access'
+ref table 'Customer Current'
+ref table 'Bank Measures'
+
+ref role 'Region Vestland'
+ref role 'Region Oslo'
+ref role 'All regions'
+ref role 'Regional manager'
+
+ref cultureInfo en-US
+

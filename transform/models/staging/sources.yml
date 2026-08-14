@@ -1,0 +1,61 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Files as the loader delivered them: one row per line of every legacy extract and of the
+      exchange-rate cache, every column as text, plus the file name, the extract day and the load time.
+      Nothing is cleaned here; the staging models do that.
+    schema: raw
+    loader: load/load_duckdb.py (DuckDB) and load/load_snowflake.py (Snowflake)
+    loaded_at_field: _loaded_at
+    freshness:
+      warn_after: {count: 3, period: day}
+      error_after: {count: 14, period: day}
+    tables:
+      - name: customers
+        description: Customer master data from the core system, one row per delivered version (legacy file CUST_DDMMYYYY.csv).
+        columns:
+          - name: CUST_ID
+            description: Customer id in the core system.
+          - name: UPD_TS
+            description: When the row was last changed in the core system, as DDMMYYYY HH:MM:SS.
+          - name: _file_name
+            description: Legacy file the row came from.
+          - name: _extract_day
+            description: Day of the extract that delivered the row.
+          - name: _loaded_at
+            description: When the loader wrote the row.
+      - name: accounts
+        description: Account master data, one row per delivered version (ACCT_DDMMYYYY.csv).
+        columns:
+          - name: ACCT_NO
+            description: Eleven-digit account number.
+      - name: cards
+        description: Payment cards, one row per delivered version (CARD_DDMMYYYY.csv).
+        columns:
+          - name: CARD_ID
+            description: Card id in the core system.
+      - name: merchants
+        description: Merchants with category codes (MERCH_DDMMYYYY.csv).
+        columns:
+          - name: MERCH_ID
+            description: Merchant id in the core system.
+      - name: transactions
+        description: >
+          Ledger transactions, one row per delivered version (TXN_DDMMYYYY.csv). A transaction that was
+          corrected in the core system appears again with a later UPD_TS; duplicate lines from the
+          extract are kept as delivered.
+        columns:
+          - name: TXN_ID
+            description: Transaction id in the core system.
+          - name: BOOK_DT
+            description: Booking date as DDMMYYYY.
+          - name: AMT
+            description: Signed amount in the transaction currency with a decimal comma.
+      - name: fx_rates
+        description: Norges Bank daily rates against NOK from the committed cache, one row per published date and currency.
+        freshness: null
+      - name: load_audit
+        description: One row per loaded file with rows loaded and rejected.
+        freshness: null

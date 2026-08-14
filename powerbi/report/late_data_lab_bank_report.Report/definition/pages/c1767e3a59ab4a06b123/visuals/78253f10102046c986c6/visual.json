@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "78253f10102046c986c6",
+  "position": {
+    "x": 510,
+    "y": 140,
+    "z": 3,
+    "height": 150,
+    "width": 430,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Foreign Currency Spend NOK"
+                }
+              },
+              "queryRef": "Bank Measures.Foreign Currency Spend NOK",
+              "nativeQueryRef": "Foreign Currency Spend NOK"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

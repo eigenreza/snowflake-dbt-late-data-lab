@@ -1,0 +1,61 @@
+table MART_MONTHLY_CATEGORY_REGION
+	lineageTag: 80688a3b-7127-4c99-a3e0-97e4a0bfb841
+
+	column report_month
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: af4ceba2-36c2-454e-972d-ccd4d45aefc1
+		summarizeBy: none
+		sourceColumn: REPORT_MONTH
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column category_code
+		dataType: string
+		lineageTag: 96dc3d3d-808e-4542-8df8-74ff18abbb22
+		summarizeBy: none
+		sourceColumn: CATEGORY_CODE
+
+		annotation SummarizationSetBy = User
+
+	column region
+		dataType: string
+		lineageTag: ca6d7bd3-f7bc-41ba-aa6d-ddca58aaecd7
+		summarizeBy: none
+		sourceColumn: REGION
+
+		annotation SummarizationSetBy = User
+
+	column value_nok
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 3e904a51-b628-441f-a035-6c2d4559b4c5
+		summarizeBy: sum
+		sourceColumn: VALUE_NOK
+
+		annotation SummarizationSetBy = User
+
+	column txn_count
+		dataType: double
+		formatString: #,0
+		lineageTag: 7515b82a-8aa9-46c7-ba00-76154466e54d
+		summarizeBy: sum
+		sourceColumn: TXN_COUNT
+
+		annotation SummarizationSetBy = User
+
+	partition MART_MONTHLY_CATEGORY_REGION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "MART_MONTHLY_CATEGORY_REGION", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

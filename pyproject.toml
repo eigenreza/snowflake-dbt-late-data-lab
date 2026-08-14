@@ -1,0 +1,13 @@
+[project]
+name = "snowflake-dbt-late-data-lab"
+version = "0.1.0"
+description = "How late-arriving and corrected records distort warehouse KPIs, and what each incremental loading strategy costs to put them right."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+authors = [{ name = "Reza Azad Gholami" }]
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

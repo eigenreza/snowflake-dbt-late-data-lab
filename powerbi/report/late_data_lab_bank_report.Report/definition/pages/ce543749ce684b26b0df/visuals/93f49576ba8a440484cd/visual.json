@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "93f49576ba8a440484cd",
+  "position": {
+    "x": 980,
+    "y": 580,
+    "z": 6,
+    "height": 460,
+    "width": 900,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "customer_no"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.customer_no",
+              "nativeQueryRef": "customer_no"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "full_name"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.full_name",
+              "nativeQueryRef": "full_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.region",
+              "nativeQueryRef": "region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "version_no"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.version_no",
+              "nativeQueryRef": "version_no"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "valid_from"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.valid_from",
+              "nativeQueryRef": "valid_from"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "valid_to"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.valid_to",
+              "nativeQueryRef": "valid_to"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_CUSTOMER"
+                    }
+                  },
+                  "Property": "is_current"
+                }
+              },
+              "queryRef": "DIM_CUSTOMER.is_current",
+              "nativeQueryRef": "is_current"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DIM_CUSTOMER"
+                  }
+                },
+                "Property": "valid_from"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Customer versions after a move (version 2 and later)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "45c6781e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_CUSTOMER"
+              }
+            },
+            "Property": "version_no"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "DIM_CUSTOMER",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 1,
+                  "Left": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "t"
+                        }
+                      },
+                      "Property": "version_no"
+                    }
+                  },
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

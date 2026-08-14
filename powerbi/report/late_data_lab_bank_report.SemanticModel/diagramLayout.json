@@ -1,0 +1,178 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1589.2405167072802,
+            "y": 529.67086114975825
+          },
+          "nodeIndex": "Bank Measures",
+          "nodeLineageTag": "6a934ff2-9b7b-4e89-8df8-b21aa323243f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1355.24051670728,
+            "y": -50
+          },
+          "nodeIndex": "Customer Current",
+          "nodeLineageTag": "7c0dc4e7-9282-4898-b360-261dd4480438",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1068.2200884829144,
+            "y": 246.56074280110261
+          },
+          "nodeIndex": "DIM_ACCOUNT",
+          "nodeLineageTag": "e6c9ea56-da3f-4ffa-911c-c01fae1a608f",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 891.57608947398853,
+            "y": 992.27273115643789
+          },
+          "nodeIndex": "DIM_CURRENCY",
+          "nodeLineageTag": "fc9aa5be-7425-4510-982a-5a4660de63ca",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 605.270902321191,
+            "y": 1009.3417222995167
+          },
+          "nodeIndex": "DIM_CUSTOMER",
+          "nodeLineageTag": "09cb05c5-72f7-4bf9-90a4-2e521f98bed5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 495.65708140379456,
+            "y": 635.85652130848041
+          },
+          "nodeIndex": "DIM_DATE",
+          "nodeLineageTag": "d03df3d9-5c75-4a69-81e5-b98eb993417f",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1103.7290527476971,
+            "y": 643.09950622853876
+          },
+          "nodeIndex": "DIM_MERCHANT",
+          "nodeLineageTag": "e7400063-86af-4e64-8e7a-068b9a893b46",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 782.65848077740213,
+            "y": 362.26340467550767
+          },
+          "nodeIndex": "FCT_ACCOUNT_BALANCE_DAILY",
+          "nodeLineageTag": "65aa6b2b-3e4c-4b7c-9db2-130f82a51919",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 801.95811410333658,
+            "y": 639.31035587835186
+          },
+          "nodeIndex": "FCT_TRANSACTIONS",
+          "nodeLineageTag": "66212f7d-c1ae-45b1-95f9-58695e233a74",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 603.48776017844784
+          },
+          "nodeIndex": "MART_MONTHLY_CATEGORY_REGION",
+          "nodeLineageTag": "7446186f-f95c-4031-89c2-4de2f9017561",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1873.2405167072802,
+            "y": 615.67086114975825
+          },
+          "nodeIndex": "Region Access",
+          "nodeLineageTag": "ad0af345-3c63-4cf1-9f40-96ea564230e9",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 211.30668855227395,
+            "y": 983.16699007967713
+          },
+          "nodeIndex": "Truth Monthly",
+          "nodeLineageTag": "1702dcea-f46a-4521-acc6-6fbe964885c9",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

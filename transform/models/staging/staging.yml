@@ -1,0 +1,206 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: >
+      Customer versions from the legacy extract, typed and cleaned. One row per customer and update
+      time; the same customer appears once per change delivered. Names and places are restored to
+      title case because the old extract wrote them in whatever case the operator used.
+    columns:
+      - name: customer_id
+        description: Customer id in the core system.
+        data_tests: [not_null]
+      - name: customer_no
+        description: Customer number shown to the customer, for example C100042.
+        data_tests: [not_null]
+      - name: first_name
+      - name: last_name
+      - name: birth_date
+      - name: segment
+        description: Commercial segment at the time of this version.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Standard', 'Premium', 'Student', 'Private Banking']
+      - name: region
+        description: County the customer lived in at the time of this version.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('regions')
+                field: region
+      - name: street
+      - name: postal_code
+      - name: city
+      - name: customer_since
+        description: Date the customer relationship started.
+      - name: created_at
+        description: When the row was first written in the core system.
+      - name: updated_at
+        description: When this version was written in the core system.
+        data_tests: [not_null]
+      - name: source_file
+        description: Legacy file the version came from.
+      - name: extract_day
+        description: Day of the extract that delivered the version.
+      - name: loaded_at
+        description: When the loader wrote the row into RAW.
+
+  - name: stg_accounts
+    description: Account versions, typed and cleaned. One row per account and update time.
+    columns:
+      - name: account_no
+        description: Eleven-digit account number, the business key.
+        data_tests: [not_null]
+      - name: customer_id
+        description: Owning customer.
+        data_tests: [not_null]
+      - name: account_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['CURRENT', 'SAVINGS']
+      - name: open_date
+        data_tests: [not_null]
+      - name: close_date
+        description: Set on the version delivered when the account was closed.
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['OPEN', 'CLOSED']
+      - name: opening_balance
+        description: Balance in NOK when the account was opened.
+        data_tests: [not_null]
+      - name: credit_limit
+        description: Overdraft limit in NOK; zero when the account may not go below zero.
+        data_tests: [not_null]
+      - name: created_at
+      - name: updated_at
+        data_tests: [not_null]
+      - name: source_file
+      - name: extract_day
+      - name: loaded_at
+
+  - name: stg_cards
+    description: Card versions, typed and cleaned.
+    columns:
+      - name: card_id
+        data_tests: [not_null]
+      - name: account_no
+        description: Account the card draws on.
+        data_tests: [not_null]
+      - name: masked_pan
+        description: Card number with the middle digits masked.
+      - name: issued_date
+      - name: expiry_date
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['ACTIVE', 'BLOCKED', 'EXPIRED']
+      - name: created_at
+      - name: updated_at
+        data_tests: [not_null]
+      - name: source_file
+      - name: extract_day
+      - name: loaded_at
+
+  - name: stg_merchants
+    description: Merchant versions, typed and cleaned, with the category name taken from the seed.
+    columns:
+      - name: merchant_id
+        data_tests: [not_null]
+      - name: merchant_name
+        data_tests: [not_null]
+      - name: category_code
+        description: Merchant category code.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('merchant_categories')
+                field: category_code
+      - name: category_name
+      - name: country_code
+        description: ISO country code of the merchant.
+        data_tests: [not_null]
+      - name: city
+      - name: created_at
+      - name: updated_at
+        data_tests: [not_null]
+      - name: source_file
+      - name: extract_day
+      - name: loaded_at
+
+  - name: stg_transactions
+    description: >
+      Transaction versions, typed and cleaned. One row per transaction id and update time. The
+      newest update time of an id is its current state in the core system; earlier ones are the
+      states it had before a correction.
+    columns:
+      - name: txn_id
+        description: Transaction id in the core system.
+        data_tests: [not_null]
+      - name: account_no
+        data_tests: [not_null]
+      - name: card_id
+        description: Card used, for card purchases only.
+      - name: merchant_id
+        description: Merchant, for card purchases and bill payments only.
+      - name: txn_type
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['CARD_PURCHASE', 'BILL_PAYMENT', 'TRANSFER_IN', 'TRANSFER_OUT', 'ATM_WITHDRAWAL', 'FEE', 'SALARY', 'INTEREST']
+      - name: event_date
+        description: Booking date (value date) of the transaction.
+        data_tests: [not_null]
+      - name: amount
+        description: Signed amount in the transaction currency; debits are negative.
+        data_tests: [not_null]
+      - name: currency
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('currencies')
+                field: currency_code
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['POSTED']
+      - name: reversal_of
+        description: For a reversal row, the id of the transaction it reverses.
+      - name: created_at
+        description: When the transaction was first written in the core system.
+      - name: updated_at
+        description: When this version was written in the core system.
+        data_tests: [not_null]
+      - name: source_file
+      - name: extract_day
+      - name: loaded_at
+
+  - name: stg_fx_rates
+    description: Published Norges Bank rates against NOK, one row per currency and publication date.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [rate_date, currency]
+    columns:
+      - name: rate_date
+        description: Publication date (Norwegian business days only).
+        data_tests: [not_null]
+      - name: currency
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['EUR', 'USD', 'SEK']
+      - name: rate_nok
+        description: NOK per one unit of the currency.
+        data_tests: [not_null]
+      - name: source_file
+      - name: loaded_at

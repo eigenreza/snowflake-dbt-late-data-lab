@@ -1,0 +1,102 @@
+table DIM_DATE
+	lineageTag: bb017f86-3653-43d1-a052-04df63df2056
+	dataCategory: Time
+
+	column date_day
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: c403a3a1-c70d-443c-9053-76c60e6389f4
+		summarizeBy: none
+		sourceColumn: DATE_DAY
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: double
+		formatString: 0
+		lineageTag: d54030a7-fa21-40b6-a1ab-2024eea3dd25
+		summarizeBy: none
+		sourceColumn: YEAR
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: double
+		formatString: 0
+		lineageTag: 3dbc82a0-9530-4cc3-8624-4a2968f746b3
+		summarizeBy: none
+		sourceColumn: QUARTER
+
+		annotation SummarizationSetBy = User
+
+	column month
+		dataType: double
+		formatString: 0
+		lineageTag: 329c4938-d387-493c-8bf6-311456187474
+		summarizeBy: none
+		sourceColumn: MONTH
+
+		annotation SummarizationSetBy = User
+
+	column month_start
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 7c56849a-a9ac-4796-829c-f6ebd3b527ec
+		summarizeBy: none
+		sourceColumn: MONTH_START
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year_month
+		dataType: string
+		lineageTag: 36a2af69-c75d-47bd-890f-a9c6a354df69
+		summarizeBy: none
+		sourceColumn: YEAR_MONTH
+		sortByColumn: month_start
+
+		annotation SummarizationSetBy = User
+
+	column day_of_month
+		dataType: double
+		formatString: 0
+		lineageTag: 9dad9c71-4c29-4c25-afbe-7023dd3a7e55
+		summarizeBy: none
+		sourceColumn: DAY_OF_MONTH
+
+		annotation SummarizationSetBy = User
+
+	column iso_day_of_week
+		dataType: double
+		formatString: 0
+		lineageTag: e1026e4e-b159-4fdb-b3eb-1d6df0d89884
+		summarizeBy: none
+		sourceColumn: ISO_DAY_OF_WEEK
+
+		annotation SummarizationSetBy = User
+
+	column is_weekend
+		dataType: boolean
+		lineageTag: 5793bcfa-11ba-4a41-94c7-bd5e5f7442eb
+		summarizeBy: none
+		sourceColumn: IS_WEEKEND
+
+		annotation SummarizationSetBy = User
+
+	partition DIM_DATE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "DIM_DATE", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,192 @@
+table DIM_CUSTOMER
+	lineageTag: 2c08acc3-ac84-4c96-8d5b-6e0d5360daff
+
+	column customer_sk
+		dataType: string
+		isHidden
+		lineageTag: 48f12bcc-83a0-466f-a764-5e7ef250a81c
+		summarizeBy: none
+		sourceColumn: CUSTOMER_SK
+
+		annotation SummarizationSetBy = User
+
+	column customer_id
+		dataType: double
+		lineageTag: e6ae1de9-cad4-42e7-82b1-d64dddc0ee27
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_no
+		dataType: string
+		lineageTag: 2a6ffb79-9f4c-4cef-8a46-2f69d6ee5ab8
+		summarizeBy: none
+		sourceColumn: CUSTOMER_NO
+
+		annotation SummarizationSetBy = User
+
+	column first_name
+		dataType: string
+		lineageTag: b3bad1ab-6b68-491f-acca-35762f749c46
+		summarizeBy: none
+		sourceColumn: FIRST_NAME
+
+		annotation SummarizationSetBy = User
+
+	column last_name
+		dataType: string
+		lineageTag: a3794304-5665-4d3a-8739-70fa6099f29d
+		summarizeBy: none
+		sourceColumn: LAST_NAME
+
+		annotation SummarizationSetBy = User
+
+	column full_name
+		dataType: string
+		lineageTag: 4af31530-e920-4ec4-8614-fb4d0780b816
+		summarizeBy: none
+		sourceColumn: FULL_NAME
+
+		annotation SummarizationSetBy = User
+
+	column birth_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 1a3e62cb-eeb5-44da-b700-a8899c1c6ea4
+		summarizeBy: none
+		sourceColumn: BIRTH_DATE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column segment
+		dataType: string
+		lineageTag: cf1941f0-cf55-4506-bfdd-1e5d9dd171cc
+		summarizeBy: none
+		sourceColumn: SEGMENT
+
+		annotation SummarizationSetBy = User
+
+	column region
+		dataType: string
+		lineageTag: 76f94d76-3a75-4bc1-ae88-7b8f3c8dce49
+		summarizeBy: none
+		sourceColumn: REGION
+
+		annotation SummarizationSetBy = User
+
+	column area
+		dataType: string
+		lineageTag: 8345217c-2789-4006-806d-2a9b69da9b6a
+		summarizeBy: none
+		sourceColumn: AREA
+
+		annotation SummarizationSetBy = User
+
+	column street
+		dataType: string
+		lineageTag: a16ce1dc-d347-4900-81a1-1b00471e9905
+		summarizeBy: none
+		sourceColumn: STREET
+
+		annotation SummarizationSetBy = User
+
+	column postal_code
+		dataType: string
+		lineageTag: 396731b6-fdcc-488a-89bc-8b6d9851b580
+		summarizeBy: none
+		sourceColumn: POSTAL_CODE
+
+		annotation SummarizationSetBy = User
+
+	column city
+		dataType: string
+		lineageTag: ba1efb11-41de-49ad-bff0-d1bfa43f10c8
+		summarizeBy: none
+		sourceColumn: CITY
+
+		annotation SummarizationSetBy = User
+
+	column customer_since
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 4b4781f6-0894-4766-9819-422f2c21f1b1
+		summarizeBy: none
+		sourceColumn: CUSTOMER_SINCE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_from
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 38268724-fd68-498b-868d-46d12219aee3
+		summarizeBy: none
+		sourceColumn: VALID_FROM
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column valid_to
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 0954e67c-7c99-46ca-b2b0-82c7abd7211b
+		summarizeBy: none
+		sourceColumn: VALID_TO
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_current
+		dataType: boolean
+		lineageTag: 11855a73-336d-4d67-950b-74dadf0d343a
+		summarizeBy: none
+		sourceColumn: IS_CURRENT
+
+		annotation SummarizationSetBy = User
+
+	column version_no
+		dataType: double
+		formatString: 0
+		lineageTag: fa5652e8-48f5-409e-9ee1-893631e0438d
+		summarizeBy: none
+		sourceColumn: VERSION_NO
+
+		annotation SummarizationSetBy = User
+
+	column version_started_at
+		dataType: dateTime
+		lineageTag: 9a4f59b0-a2f8-452e-ad3c-e0431ca19b2a
+		summarizeBy: none
+		sourceColumn: VERSION_STARTED_AT
+
+		annotation SummarizationSetBy = User
+
+	column version_ended_at
+		dataType: dateTime
+		lineageTag: e28e7856-6d00-4767-89e9-1da9b61b1926
+		summarizeBy: none
+		sourceColumn: VERSION_ENDED_AT
+
+		annotation SummarizationSetBy = User
+
+	partition DIM_CUSTOMER = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "DIM_CUSTOMER", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,100 @@
+table DIM_ACCOUNT
+	lineageTag: 041a9a56-77ab-4183-8727-abd7f3cab672
+
+	column account_no
+		dataType: string
+		lineageTag: 8d76ef92-6bac-4501-8d99-5946e49edef8
+		summarizeBy: none
+		sourceColumn: ACCOUNT_NO
+
+		annotation SummarizationSetBy = User
+
+	column customer_id
+		dataType: double
+		isHidden
+		lineageTag: 319a1fa8-c040-426e-a630-0bf302b6da84
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column account_type
+		dataType: string
+		lineageTag: 91986aa6-3fbb-433e-b170-be356f664abd
+		summarizeBy: none
+		sourceColumn: ACCOUNT_TYPE
+
+		annotation SummarizationSetBy = User
+
+	column open_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 3c29aa3f-0d51-4cec-ad27-931ad153069c
+		summarizeBy: none
+		sourceColumn: OPEN_DATE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column close_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: c9f0a089-f7eb-47ed-8da3-cb0e33c343c8
+		summarizeBy: none
+		sourceColumn: CLOSE_DATE
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status
+		dataType: string
+		lineageTag: 085b3691-2674-4833-a93e-1ab07c2158b1
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = User
+
+	column opening_balance
+		dataType: double
+		formatString: #,0.00
+		lineageTag: ca9797d3-584a-4077-9222-6584c14ab394
+		summarizeBy: none
+		sourceColumn: OPENING_BALANCE
+
+		annotation SummarizationSetBy = User
+
+	column credit_limit
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 384cc922-8686-4aaa-88f4-110fcb2ceeec
+		summarizeBy: none
+		sourceColumn: CREDIT_LIMIT
+
+		annotation SummarizationSetBy = User
+
+	column source_updated_at
+		dataType: dateTime
+		isHidden
+		lineageTag: 52a51ba6-f6e5-46b3-a3ec-eb573f75a13e
+		summarizeBy: none
+		sourceColumn: SOURCE_UPDATED_AT
+
+		annotation SummarizationSetBy = User
+
+	partition DIM_ACCOUNT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases(SnowflakeServer, "TRANSFORM_WH", [Role = SnowflakeRole, Implementation = "2.0"]),
+				    Database = Source{[Name = "LATE_DATA_LAB", Kind = "Database"]}[Data],
+				    Schema = Database{[Name = "MARTS", Kind = "Schema"]}[Data],
+				    Table = Schema{[Name = "DIM_ACCOUNT", Kind = "Table"]}[Data]
+				in
+				    Table
+
+	annotation PBI_ResultType = Table
+

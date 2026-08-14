@@ -1,0 +1,40 @@
+version: 2
+
+exposures:
+  - name: late_data_lab_demo
+    label: Late Data Lab demo
+    type: dashboard
+    maturity: medium
+    url: https://github.com/eigenreza/snowflake-dbt-late-data-lab
+    description: >
+      Streamlit demo that reads exported marts and experiment results: the late-data problem, the
+      strategy race, the bank report with simulated row-level security, and the warehouse internals.
+    depends_on:
+      - ref('fct_transactions')
+      - ref('fct_account_balance_daily')
+      - ref('mart_monthly_category_region')
+      - ref('dim_customer')
+      - ref('dim_account')
+      - ref('dim_merchant')
+      - ref('dim_date')
+      - ref('dim_currency')
+    owner:
+      name: Reza Azad Gholami
+
+  - name: bank_report_power_bi
+    label: Bank report (Power BI)
+    type: dashboard
+    maturity: low
+    description: >
+      Power BI report built on the star schema in Import mode, with regional row-level security that
+      mirrors the Snowflake row access policy. See powerbi/MODEL-GUIDE.md.
+    depends_on:
+      - ref('fct_transactions')
+      - ref('fct_account_balance_daily')
+      - ref('dim_customer')
+      - ref('dim_account')
+      - ref('dim_merchant')
+      - ref('dim_date')
+      - ref('dim_currency')
+    owner:
+      name: Reza Azad Gholami

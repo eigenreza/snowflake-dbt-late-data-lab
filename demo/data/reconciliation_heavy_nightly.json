@@ -1,0 +1,2060 @@
+{
+  "mode": "nightly",
+  "run_date": "2024-12-30",
+  "old_rows": 7918,
+  "new_rows": 7918,
+  "keys_in_both": 7918,
+  "keys_only_in_old": 0,
+  "keys_only_in_new": 0,
+  "value_sum_old": 1588300017.73,
+  "value_sum_new": 1589926154.52,
+  "count_sum_old": 1034845,
+  "count_sum_new": 1037428,
+  "keys_with_value_difference": 4151,
+  "keys_with_count_difference": 3744,
+  "max_abs_value_difference": 47716.62,
+  "matches": false,
+  "differing_keys": [
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Oslo",
+      "value_old": 594630.8,
+      "value_new": 642347.42,
+      "count_old": 1151,
+      "count_new": 1241,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Akershus",
+      "value_old": 673141.14,
+      "value_new": 712494.54,
+      "count_old": 1287,
+      "count_new": 1374,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 503928.36,
+      "value_new": 541360.29,
+      "count_old": 992,
+      "count_new": 1062,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Vestland",
+      "value_old": 591451.43,
+      "value_new": 626450.44,
+      "count_old": 1103,
+      "count_new": 1181,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5732",
+      "region": "Buskerud",
+      "value_old": 141440.68,
+      "value_new": 175659.1,
+      "count_old": 36,
+      "count_new": 41,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5732",
+      "region": "Oslo",
+      "value_old": 251826.4,
+      "value_new": 285887.65,
+      "count_old": 70,
+      "count_new": 76,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Rogaland",
+      "value_old": 403025.0,
+      "value_new": 435683.01,
+      "count_old": 774,
+      "count_new": 833,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5311",
+      "region": "Akershus",
+      "value_old": 249816.34,
+      "value_new": 281969.7,
+      "count_old": 176,
+      "count_new": 189,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "\u00d8stfold",
+      "value_old": 334290.04,
+      "value_new": 362824.39,
+      "count_old": 602,
+      "count_new": 659,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5732",
+      "region": "Vestland",
+      "value_old": 267100.17,
+      "value_new": 293987.71,
+      "count_old": 80,
+      "count_new": 89,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "5732",
+      "region": "Vestland",
+      "value_old": 422361.05,
+      "value_new": 396032.94,
+      "count_old": 82,
+      "count_new": 80,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "5732",
+      "region": "Innlandet",
+      "value_old": 157279.63,
+      "value_new": 183607.74,
+      "count_old": 36,
+      "count_new": 38,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-01-01",
+      "category_code": "6513",
+      "region": "Innlandet",
+      "value_old": 1938638.31,
+      "value_new": 1962925.18,
+      "count_old": 150,
+      "count_new": 152,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Innlandet",
+      "value_old": 304757.02,
+      "value_new": 328752.36,
+      "count_old": 596,
+      "count_new": 649,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3299771.76,
+      "value_new": 3322627.15,
+      "count_old": 253,
+      "count_new": 253,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1805176.63,
+      "value_new": 1827930.92,
+      "count_old": 146,
+      "count_new": 147,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1831130.17,
+      "value_new": 1853884.46,
+      "count_old": 144,
+      "count_new": 145,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1975655.35,
+      "value_new": 1952901.06,
+      "count_old": 159,
+      "count_new": 158,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1876861.2,
+      "value_new": 1899615.49,
+      "count_old": 151,
+      "count_new": 152,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1848870.93,
+      "value_new": 1871625.22,
+      "count_old": 145,
+      "count_new": 146,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1966732.16,
+      "value_new": 1943977.87,
+      "count_old": 150,
+      "count_new": 149,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1846890.71,
+      "value_new": 1869645.0,
+      "count_old": 145,
+      "count_new": 146,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 2011755.09,
+      "value_new": 1989000.8,
+      "count_old": 155,
+      "count_new": 154,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1908278.21,
+      "value_new": 1885523.92,
+      "count_old": 155,
+      "count_new": 154,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-12-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1827501.28,
+      "value_new": 1850255.57,
+      "count_old": 151,
+      "count_new": 152,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-12-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1960299.03,
+      "value_new": 1937544.74,
+      "count_old": 157,
+      "count_new": 156,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1983035.23,
+      "value_new": 1960280.94,
+      "count_old": 156,
+      "count_new": 155,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1933085.27,
+      "value_new": 1955839.56,
+      "count_old": 147,
+      "count_new": 148,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1997054.12,
+      "value_new": 1974299.83,
+      "count_old": 152,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1991164.1,
+      "value_new": 1968409.81,
+      "count_old": 157,
+      "count_new": 156,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 2050595.39,
+      "value_new": 2027841.1,
+      "count_old": 157,
+      "count_new": 156,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1982098.83,
+      "value_new": 1959344.54,
+      "count_old": 155,
+      "count_new": 154,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-01-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1503069.62,
+      "value_new": 1480315.33,
+      "count_old": 117,
+      "count_new": 116,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1821164.0,
+      "value_new": 1843918.29,
+      "count_old": 139,
+      "count_new": 140,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1926730.1,
+      "value_new": 1949484.39,
+      "count_old": 150,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1964267.83,
+      "value_new": 1941513.54,
+      "count_old": 152,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-03-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1947704.37,
+      "value_new": 1924950.08,
+      "count_old": 155,
+      "count_new": 154,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1961901.66,
+      "value_new": 1939147.37,
+      "count_old": 150,
+      "count_new": 149,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1952543.73,
+      "value_new": 1929789.44,
+      "count_old": 152,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 2057880.14,
+      "value_new": 2035125.85,
+      "count_old": 156,
+      "count_new": 155,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1885141.96,
+      "value_new": 1907896.25,
+      "count_old": 144,
+      "count_new": 145,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1924313.45,
+      "value_new": 1947067.74,
+      "count_old": 156,
+      "count_new": 157,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1989724.58,
+      "value_new": 1966970.29,
+      "count_old": 152,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1850915.56,
+      "value_new": 1873669.85,
+      "count_old": 147,
+      "count_new": 148,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1858680.41,
+      "value_new": 1881434.7,
+      "count_old": 146,
+      "count_new": 147,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-03-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1828824.46,
+      "value_new": 1851578.75,
+      "count_old": 148,
+      "count_new": 149,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1856209.59,
+      "value_new": 1878963.88,
+      "count_old": 143,
+      "count_new": 144,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 2039993.95,
+      "value_new": 2017239.66,
+      "count_old": 157,
+      "count_new": 156,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 2051661.48,
+      "value_new": 2028907.19,
+      "count_old": 159,
+      "count_new": 158,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1896609.23,
+      "value_new": 1919363.52,
+      "count_old": 150,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-01-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1575152.32,
+      "value_new": 1597906.61,
+      "count_old": 121,
+      "count_new": 122,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1847814.62,
+      "value_new": 1870568.91,
+      "count_old": 140,
+      "count_new": 141,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1962877.46,
+      "value_new": 1940123.17,
+      "count_old": 152,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1841955.65,
+      "value_new": 1864709.94,
+      "count_old": 144,
+      "count_new": 145,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1931802.48,
+      "value_new": 1954556.77,
+      "count_old": 151,
+      "count_new": 152,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1864348.19,
+      "value_new": 1887102.48,
+      "count_old": 143,
+      "count_new": 144,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5311",
+      "region": "Innlandet",
+      "value_old": 131203.26,
+      "value_new": 152913.57,
+      "count_old": 95,
+      "count_new": 104,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5651",
+      "region": "Oslo",
+      "value_old": 198859.86,
+      "value_new": 220174.31,
+      "count_old": 174,
+      "count_new": 192,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5732",
+      "region": "\u00d8stfold",
+      "value_old": 255177.49,
+      "value_new": 276333.3,
+      "count_old": 52,
+      "count_new": 58,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "4511",
+      "region": "Oslo",
+      "value_old": 166381.76,
+      "value_new": 145633.76,
+      "count_old": 48,
+      "count_new": 47,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "4511",
+      "region": "Buskerud",
+      "value_old": 97421.64,
+      "value_new": 118169.64,
+      "count_old": 22,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5541",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 142375.44,
+      "value_new": 161904.5,
+      "count_old": 198,
+      "count_new": 225,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5541",
+      "region": "Akershus",
+      "value_old": 213641.17,
+      "value_new": 233049.85,
+      "count_old": 312,
+      "count_new": 338,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5541",
+      "region": "Vestland",
+      "value_old": 190680.91,
+      "value_new": 209580.26,
+      "count_old": 261,
+      "count_new": 290,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Agder",
+      "value_old": 286472.44,
+      "value_new": 305154.91,
+      "count_old": 566,
+      "count_new": 600,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3378235.28,
+      "value_new": 3396853.75,
+      "count_old": 268,
+      "count_new": 268,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Telemark",
+      "value_old": 155109.24,
+      "value_new": 173658.76,
+      "count_old": 320,
+      "count_new": 351,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Buskerud",
+      "value_old": 279908.9,
+      "value_new": 298370.58,
+      "count_old": 513,
+      "count_new": 552,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1148388.05,
+      "value_new": 1166565.77,
+      "count_old": 84,
+      "count_new": 85,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1146840.46,
+      "value_new": 1165018.18,
+      "count_old": 89,
+      "count_new": 90,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1225792.72,
+      "value_new": 1243970.44,
+      "count_old": 93,
+      "count_new": 94,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1255270.43,
+      "value_new": 1273448.15,
+      "count_old": 97,
+      "count_new": 98,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1151314.05,
+      "value_new": 1169491.77,
+      "count_old": 83,
+      "count_new": 84,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1154361.2,
+      "value_new": 1172538.92,
+      "count_old": 88,
+      "count_new": 89,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-01-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 989446.52,
+      "value_new": 1007624.24,
+      "count_old": 71,
+      "count_new": 72,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1273171.59,
+      "value_new": 1291349.31,
+      "count_old": 94,
+      "count_new": 95,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1190979.19,
+      "value_new": 1209156.91,
+      "count_old": 86,
+      "count_new": 87,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-03-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1150151.0,
+      "value_new": 1168328.72,
+      "count_old": 86,
+      "count_new": 87,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1250750.0,
+      "value_new": 1268927.72,
+      "count_old": 95,
+      "count_new": 96,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1171869.65,
+      "value_new": 1190047.37,
+      "count_old": 87,
+      "count_new": 88,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1216411.33,
+      "value_new": 1234589.05,
+      "count_old": 90,
+      "count_new": 91,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1234698.79,
+      "value_new": 1252876.51,
+      "count_old": 95,
+      "count_new": 96,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1242047.77,
+      "value_new": 1260225.49,
+      "count_old": 94,
+      "count_new": 95,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1155233.25,
+      "value_new": 1173410.97,
+      "count_old": 84,
+      "count_new": 85,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-12-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1194741.96,
+      "value_new": 1212919.68,
+      "count_old": 86,
+      "count_new": 87,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1227092.14,
+      "value_new": 1245269.86,
+      "count_old": 91,
+      "count_new": 92,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1232322.73,
+      "value_new": 1250500.45,
+      "count_old": 91,
+      "count_new": 92,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1160643.19,
+      "value_new": 1178820.91,
+      "count_old": 87,
+      "count_new": 88,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1164978.48,
+      "value_new": 1183156.2,
+      "count_old": 87,
+      "count_new": 88,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "Telemark",
+      "value_old": 1190681.35,
+      "value_new": 1208859.07,
+      "count_old": 90,
+      "count_new": 91,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-04-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1813972.73,
+      "value_new": 1831747.32,
+      "count_old": 143,
+      "count_new": 144,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-04-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1923783.68,
+      "value_new": 1906009.09,
+      "count_old": 152,
+      "count_new": 151,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "Vestfold",
+      "value_old": 1947175.85,
+      "value_new": 1929670.46,
+      "count_old": 155,
+      "count_new": 154,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "M\u00f8re og Romsdal",
+      "value_old": 1824199.81,
+      "value_new": 1841705.2,
+      "count_old": 141,
+      "count_new": 142,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3471777.17,
+      "value_new": 3489212.02,
+      "count_old": 282,
+      "count_new": 282,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 354221.32,
+      "value_new": 337211.24,
+      "count_old": 25,
+      "count_new": 24,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "7011",
+      "region": "Nordland",
+      "value_old": 53578.38,
+      "value_new": 70262.74,
+      "count_old": 18,
+      "count_new": 22,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5651",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 168250.42,
+      "value_new": 184735.62,
+      "count_old": 156,
+      "count_new": 165,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Buskerud",
+      "value_old": 2011389.12,
+      "value_new": 2027529.49,
+      "count_old": 152,
+      "count_new": 153,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Vestfold",
+      "value_old": 275108.06,
+      "value_new": 291178.9,
+      "count_old": 525,
+      "count_new": 557,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5311",
+      "region": "Buskerud",
+      "value_old": 77891.58,
+      "value_new": 93858.42,
+      "count_old": 68,
+      "count_new": 78,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5411",
+      "region": "Nordland",
+      "value_old": 155315.92,
+      "value_new": 171215.26,
+      "count_old": 310,
+      "count_new": 341,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5651",
+      "region": "Akershus",
+      "value_old": 186124.93,
+      "value_new": 201957.88,
+      "count_old": 206,
+      "count_new": 218,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5651",
+      "region": "Buskerud",
+      "value_old": 64902.15,
+      "value_new": 80170.52,
+      "count_old": 74,
+      "count_new": 83,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3037513.46,
+      "value_new": 3022372.72,
+      "count_old": 233,
+      "count_new": 230,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Oslo",
+      "value_old": 4378727.24,
+      "value_new": 4364188.22,
+      "count_old": 332,
+      "count_new": 330,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3413441.79,
+      "value_new": 3427615.26,
+      "count_old": 276,
+      "count_new": 276,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3421772.09,
+      "value_new": 3435945.56,
+      "count_old": 272,
+      "count_new": 272,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3437142.86,
+      "value_new": 3451316.33,
+      "count_old": 268,
+      "count_new": 268,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3378789.37,
+      "value_new": 3392962.84,
+      "count_old": 272,
+      "count_new": 272,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3325449.2,
+      "value_new": 3339622.67,
+      "count_old": 259,
+      "count_new": 259,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3328785.56,
+      "value_new": 3342959.03,
+      "count_old": 268,
+      "count_new": 268,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3399372.33,
+      "value_new": 3413545.8,
+      "count_old": 268,
+      "count_new": 268,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-04-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3386583.86,
+      "value_new": 3400757.33,
+      "count_old": 272,
+      "count_new": 272,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3457470.52,
+      "value_new": 3471643.99,
+      "count_old": 268,
+      "count_new": 268,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3473162.39,
+      "value_new": 3487335.86,
+      "count_old": 272,
+      "count_new": 272,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3354075.17,
+      "value_new": 3368248.64,
+      "count_old": 265,
+      "count_new": 265,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3512301.07,
+      "value_new": 3526474.54,
+      "count_old": 280,
+      "count_new": 280,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3345407.61,
+      "value_new": 3359581.08,
+      "count_old": 272,
+      "count_new": 272,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3329260.61,
+      "value_new": 3343434.08,
+      "count_old": 264,
+      "count_new": 264,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3436902.65,
+      "value_new": 3451076.12,
+      "count_old": 275,
+      "count_new": 275,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3316537.74,
+      "value_new": 3330711.21,
+      "count_old": 258,
+      "count_new": 258,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "Tr\u00f8ndelag",
+      "value_old": 3489958.2,
+      "value_new": 3504131.67,
+      "count_old": 273,
+      "count_new": 273,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "Oslo",
+      "value_old": 4458869.42,
+      "value_new": 4444856.28,
+      "count_old": 344,
+      "count_new": 344,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "5732",
+      "region": "Akershus",
+      "value_old": 282730.77,
+      "value_new": 296721.58,
+      "count_old": 71,
+      "count_new": 73,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "5732",
+      "region": "Buskerud",
+      "value_old": 184536.16,
+      "value_new": 170545.35,
+      "count_old": 40,
+      "count_new": 38,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5311",
+      "region": "Rogaland",
+      "value_old": 145447.65,
+      "value_new": 159409.46,
+      "count_old": 111,
+      "count_new": 124,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4207350.79,
+      "value_new": 4193425.08,
+      "count_old": 332,
+      "count_new": 331,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4489761.0,
+      "value_new": 4475835.29,
+      "count_old": 345,
+      "count_new": 344,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4321740.62,
+      "value_new": 4307814.91,
+      "count_old": 335,
+      "count_new": 334,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4300830.05,
+      "value_new": 4286904.34,
+      "count_old": 331,
+      "count_new": 330,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4351779.74,
+      "value_new": 4337854.03,
+      "count_old": 331,
+      "count_new": 330,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4364658.27,
+      "value_new": 4350732.56,
+      "count_old": 327,
+      "count_new": 326,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4471788.68,
+      "value_new": 4457862.97,
+      "count_old": 346,
+      "count_new": 345,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4282989.84,
+      "value_new": 4269064.13,
+      "count_old": 333,
+      "count_new": 332,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-04-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4234239.82,
+      "value_new": 4220314.11,
+      "count_old": 329,
+      "count_new": 328,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4364020.68,
+      "value_new": 4350094.97,
+      "count_old": 339,
+      "count_new": 338,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-01-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 3505559.82,
+      "value_new": 3491634.11,
+      "count_old": 273,
+      "count_new": 272,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4428531.52,
+      "value_new": 4414605.81,
+      "count_old": 342,
+      "count_new": 341,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4218660.1,
+      "value_new": 4204734.39,
+      "count_old": 333,
+      "count_new": 332,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4377880.64,
+      "value_new": 4363954.93,
+      "count_old": 328,
+      "count_new": 327,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4388060.63,
+      "value_new": 4374134.92,
+      "count_old": 337,
+      "count_new": 336,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4389612.49,
+      "value_new": 4375686.78,
+      "count_old": 334,
+      "count_new": 333,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4409548.64,
+      "value_new": 4395622.93,
+      "count_old": 342,
+      "count_new": 341,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4434553.02,
+      "value_new": 4420627.31,
+      "count_old": 341,
+      "count_new": 340,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-12-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4316252.96,
+      "value_new": 4302327.25,
+      "count_old": 331,
+      "count_new": 330,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4267028.1,
+      "value_new": 4253102.39,
+      "count_old": 328,
+      "count_new": 327,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4395520.71,
+      "value_new": 4381595.0,
+      "count_old": 346,
+      "count_new": 345,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4194487.79,
+      "value_new": 4180562.08,
+      "count_old": 323,
+      "count_new": 322,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-03-01",
+      "category_code": "6513",
+      "region": "Vestland",
+      "value_old": 4227660.18,
+      "value_new": 4213734.47,
+      "count_old": 331,
+      "count_new": 330,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 335015.81,
+      "value_new": 321267.11,
+      "count_old": 26,
+      "count_new": 25,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 336429.54,
+      "value_new": 322680.84,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 336429.54,
+      "value_new": 322680.84,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-03-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 342573.11,
+      "value_new": 328824.41,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-04-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 336429.54,
+      "value_new": 322680.84,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 352160.72,
+      "value_new": 338412.02,
+      "count_old": 27,
+      "count_new": 26,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 331883.9,
+      "value_new": 318135.2,
+      "count_old": 26,
+      "count_new": 25,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 336429.54,
+      "value_new": 322680.84,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-05-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 349630.38,
+      "value_new": 335881.68,
+      "count_old": 25,
+      "count_new": 24,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 339113.47,
+      "value_new": 325364.77,
+      "count_old": 26,
+      "count_new": 25,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 336429.54,
+      "value_new": 322680.84,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 347102.91,
+      "value_new": 333354.21,
+      "count_old": 25,
+      "count_new": 24,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 334431.15,
+      "value_new": 320682.45,
+      "count_old": 26,
+      "count_new": 25,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 351916.83,
+      "value_new": 338168.13,
+      "count_old": 25,
+      "count_new": 24,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 354586.34,
+      "value_new": 340837.64,
+      "count_old": 27,
+      "count_new": 26,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-01-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 282688.12,
+      "value_new": 268939.42,
+      "count_old": 22,
+      "count_new": 21,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 343149.78,
+      "value_new": 329401.08,
+      "count_old": 26,
+      "count_new": 25,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 336429.54,
+      "value_new": 322680.84,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 338446.93,
+      "value_new": 324698.23,
+      "count_old": 26,
+      "count_new": 25,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 341324.39,
+      "value_new": 327575.69,
+      "count_old": 24,
+      "count_new": 23,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Finnmark",
+      "value_old": 352130.04,
+      "value_new": 338381.34,
+      "count_old": 29,
+      "count_new": 28,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5812",
+      "region": "Akershus",
+      "value_old": 243438.15,
+      "value_new": 257095.75,
+      "count_old": 439,
+      "count_new": 470,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "4511",
+      "region": "Rogaland",
+      "value_old": 123643.54,
+      "value_new": 110021.48,
+      "count_old": 38,
+      "count_new": 37,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-05-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2994101.12,
+      "value_new": 2980796.39,
+      "count_old": 227,
+      "count_new": 226,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-04-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3059394.03,
+      "value_new": 3046089.3,
+      "count_old": 237,
+      "count_new": 236,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-09-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3123222.9,
+      "value_new": 3109918.17,
+      "count_old": 234,
+      "count_new": 233,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-02-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2973200.32,
+      "value_new": 2959895.59,
+      "count_old": 232,
+      "count_new": 231,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-04-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2975285.46,
+      "value_new": 2961980.73,
+      "count_old": 227,
+      "count_new": 226,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-11-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2998028.82,
+      "value_new": 2984724.09,
+      "count_old": 229,
+      "count_new": 228,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-03-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2995249.83,
+      "value_new": 2981945.1,
+      "count_old": 231,
+      "count_new": 230,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-10-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3122923.29,
+      "value_new": 3109618.56,
+      "count_old": 237,
+      "count_new": 236,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2982575.31,
+      "value_new": 2969270.58,
+      "count_old": 237,
+      "count_new": 236,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-06-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3074465.78,
+      "value_new": 3061161.05,
+      "count_old": 233,
+      "count_new": 232,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-12-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3013301.81,
+      "value_new": 2999997.08,
+      "count_old": 231,
+      "count_new": 230,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-07-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2971454.95,
+      "value_new": 2958150.22,
+      "count_old": 228,
+      "count_new": 227,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3156802.6,
+      "value_new": 3143497.87,
+      "count_old": 234,
+      "count_new": 233,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-01-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3033320.45,
+      "value_new": 3020015.72,
+      "count_old": 231,
+      "count_new": 230,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-08-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3125476.06,
+      "value_new": 3112171.33,
+      "count_old": 241,
+      "count_new": 240,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-02-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2974759.9,
+      "value_new": 2961455.17,
+      "count_old": 226,
+      "count_new": 225,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-09-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2960545.47,
+      "value_new": 2947240.74,
+      "count_old": 229,
+      "count_new": 228,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-10-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2997576.91,
+      "value_new": 2984272.18,
+      "count_old": 225,
+      "count_new": 224,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-07-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3072706.28,
+      "value_new": 3059401.55,
+      "count_old": 236,
+      "count_new": 235,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-03-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 3063441.66,
+      "value_new": 3050136.93,
+      "count_old": 235,
+      "count_new": 234,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-08-01",
+      "category_code": "6513",
+      "region": "Rogaland",
+      "value_old": 2948983.3,
+      "value_new": 2935678.57,
+      "count_old": 222,
+      "count_new": 221,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "4511",
+      "region": "Rogaland",
+      "value_old": 118328.73,
+      "value_new": 131578.53,
+      "count_old": 37,
+      "count_new": 41,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "4511",
+      "region": "Akershus",
+      "value_old": 231405.81,
+      "value_new": 244622.67,
+      "count_old": 77,
+      "count_new": 80,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "7011",
+      "region": "Akershus",
+      "value_old": 214291.98,
+      "value_new": 227450.6,
+      "count_old": 91,
+      "count_new": 93,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2023-06-01",
+      "category_code": "7011",
+      "region": "Troms",
+      "value_old": 42172.32,
+      "value_new": 29013.7,
+      "count_old": 17,
+      "count_new": 15,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5541",
+      "region": "Rogaland",
+      "value_old": 130858.32,
+      "value_new": 143884.67,
+      "count_old": 187,
+      "count_new": 206,
+      "present_in": "both"
+    },
+    {
+      "report_month": "2024-11-01",
+      "category_code": "5311",
+      "region": "\u00d8stfold",
+      "value_old": 95741.19,
+      "value_new": 108541.67,
+      "count_old": 68,
+      "count_new": 75,
+      "present_in": "both"
+    }
+  ],
+  "differing_months": [
+    "2023-01-01",
+    "2023-02-01",
+    "2023-03-01",
+    "2023-04-01",
+    "2023-05-01",
+    "2023-06-01",
+    "2023-07-01",
+    "2023-08-01",
+    "2023-09-01",
+    "2023-10-01",
+    "2023-11-01",
+    "2023-12-01",
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01"
+  ],
+  "month_totals": [
+    {
+      "report_month": "2024-10-01",
+      "value_old": 69001277.33,
+      "value_new": 69001284.86,
+      "count_old": 45125,
+      "count_new": 45127
+    },
+    {
+      "report_month": "2024-11-01",
+      "value_old": 66666596.74,
+      "value_new": 68292726.0,
+      "count_old": 41982,
+      "count_new": 44563
+    }
+  ]
+}

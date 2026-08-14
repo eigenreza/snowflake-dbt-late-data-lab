@@ -1,0 +1,22 @@
+[theme]
+base = "light"
+primaryColor = "#2f6f8f"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f4f6f8"
+textColor = "#1f2933"
+font = "sans serif"
+linkColor = "#2f6f8f"
+borderColor = "#dde3e8"
+baseRadius = "medium"
+showSidebarBorder = true
+headingFontSizes = ["2.3rem", "1.45rem", "1.15rem"]
+headingFontWeights = [700, 650, 600]
+metricValueFontSize = "1.65rem"
+
+[server]
+headless = true
+runOnSave = false
+maxUploadSize = 5
+
+[browser]
+gatherUsageStats = false

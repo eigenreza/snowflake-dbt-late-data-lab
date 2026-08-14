@@ -1,0 +1,161 @@
+table 'Bank Measures'
+	lineageTag: 453dcb89-088c-42db-b3d3-aadd6da2b8cf
+
+	measure 'Transaction Volume' = COUNTROWS ( FCT_TRANSACTIONS )
+		formatString: #,0
+		displayFolder: Volume and value
+		lineageTag: ee37e237-c9ca-4799-8c89-1d15b4baebc6
+
+	measure 'Transaction Value NOK' = SUM ( FCT_TRANSACTIONS[amount_nok] )
+		formatString: #,0
+		displayFolder: Volume and value
+		lineageTag: 23fdf9ac-f36b-426b-b608-e0218124c86a
+
+	measure 'Spend NOK' =
+			CALCULATE (
+			    -1 * SUM ( FCT_TRANSACTIONS[amount_nok] ),
+			    FCT_TRANSACTIONS[txn_type] IN { "CARD_PURCHASE", "BILL_PAYMENT", "ATM_WITHDRAWAL", "FEE" }
+			)
+		formatString: #,0
+		displayFolder: Volume and value
+		lineageTag: ec9bf1a7-9054-476b-9706-84db3a597e5e
+
+	measure 'Inflow NOK' =
+			CALCULATE (
+			    SUM ( FCT_TRANSACTIONS[amount_nok] ),
+			    FCT_TRANSACTIONS[txn_type] IN { "SALARY", "TRANSFER_IN", "INTEREST" }
+			)
+		formatString: #,0
+		displayFolder: Volume and value
+		lineageTag: 7b5ed74b-cb1f-4a39-8f91-f9a62f7f0545
+
+	measure 'Average Transaction NOK' = DIVIDE ( [Spend NOK], CALCULATE ( [Transaction Volume], FCT_TRANSACTIONS[txn_type] IN { "CARD_PURCHASE", "BILL_PAYMENT", "ATM_WITHDRAWAL", "FEE" } ) )
+		formatString: #,0.00
+		displayFolder: Volume and value
+		lineageTag: bd18c152-7876-4f98-90b8-9ac50a76d132
+
+	measure 'Active Customers' = DISTINCTCOUNT ( FCT_TRANSACTIONS[customer_id] )
+		formatString: #,0
+		displayFolder: Customers
+		lineageTag: a108c37c-df57-4164-9043-7a4d8a99bd07
+
+	measure Customers = COUNTROWS ( 'Customer Current' )
+		formatString: #,0
+		displayFolder: Customers
+		lineageTag: 39c92612-66b8-4645-b620-e7f3f2d03a17
+
+	measure 'Customers Who Moved' = CALCULATE ( DISTINCTCOUNT ( DIM_CUSTOMER[customer_id] ), DIM_CUSTOMER[version_no] > 1 )
+		formatString: #,0
+		displayFolder: Customers
+		lineageTag: 565259cb-17cf-4888-aa82-8223de05bc70
+
+	measure 'Average Balance NOK' = AVERAGE ( FCT_ACCOUNT_BALANCE_DAILY[balance_nok] )
+		formatString: #,0
+		displayFolder: Balances
+		lineageTag: 53fb6eaf-5ace-4295-9363-4aaf29af3bb7
+
+	measure 'Closing Balance NOK' =
+			VAR LastDay = MAX ( FCT_ACCOUNT_BALANCE_DAILY[balance_date] )
+			RETURN
+			    CALCULATE ( SUM ( FCT_ACCOUNT_BALANCE_DAILY[balance_nok] ), FCT_ACCOUNT_BALANCE_DAILY[balance_date] = LastDay )
+		formatString: #,0
+		displayFolder: Balances
+		lineageTag: 37a59609-bde6-4cc9-a374-3cb36f857ab4
+
+	measure 'Spend NOK Previous Month' = CALCULATE ( [Spend NOK], DATEADD ( DIM_DATE[date_day], -1, MONTH ) )
+		formatString: #,0
+		displayFolder: Time comparison
+		lineageTag: 135fee0a-fd20-40c0-9eff-e8cd3e2dfd02
+
+	measure 'Spend MoM Change %' = DIVIDE ( [Spend NOK] - [Spend NOK Previous Month], [Spend NOK Previous Month] )
+		formatString: 0.0%
+		displayFolder: Time comparison
+		lineageTag: 7ab10639-2961-49bc-9fa2-9444c7619554
+
+	measure 'Transaction Volume Previous Month' = CALCULATE ( [Transaction Volume], DATEADD ( DIM_DATE[date_day], -1, MONTH ) )
+		formatString: #,0
+		displayFolder: Time comparison
+		lineageTag: de38aa11-4a4a-4cf6-a177-11d25f2f6dc7
+
+	measure 'Volume MoM Change %' = DIVIDE ( [Transaction Volume] - [Transaction Volume Previous Month], [Transaction Volume Previous Month] )
+		formatString: 0.0%
+		displayFolder: Time comparison
+		lineageTag: 232b4a1d-3e25-4131-8fca-f76125682a03
+
+	measure 'Foreign Currency Spend NOK' = CALCULATE ( [Spend NOK], FCT_TRANSACTIONS[currency] <> "NOK" )
+		formatString: #,0
+		displayFolder: Currency
+		lineageTag: f975c7b4-1bd5-49e3-8b5f-8b56428ebac7
+
+	measure 'Foreign Currency Share %' = DIVIDE ( [Foreign Currency Spend NOK], [Spend NOK] )
+		formatString: 0.0%
+		displayFolder: Currency
+		lineageTag: a35cdec9-86fe-4d81-930a-776045df6834
+
+	measure 'Average FX Rate Used' = AVERAGEX ( FILTER ( FCT_TRANSACTIONS, FCT_TRANSACTIONS[currency] <> "NOK" ), FCT_TRANSACTIONS[fx_rate_nok] )
+		formatString: 0.0000
+		displayFolder: Currency
+		lineageTag: ed6d5efd-b0d8-4363-a189-1773d760f26c
+
+	measure 'Report Value NOK' = SUM ( MART_MONTHLY_CATEGORY_REGION[value_nok] )
+		formatString: #,0
+		displayFolder: KPI error versus the truth
+		lineageTag: 620302e0-c9b9-4aee-a442-e4ea6ed53af6
+
+	measure 'Truth Value NOK' = SUM ( 'Truth Monthly'[value_nok] )
+		formatString: #,0
+		displayFolder: KPI error versus the truth
+		lineageTag: ba60ccab-92ce-4cb3-b049-beb2faa3491f
+
+	measure 'KPI Error NOK' = [Report Value NOK] - [Truth Value NOK]
+		formatString: #,0.00
+		displayFolder: KPI error versus the truth
+		lineageTag: 5e053f9a-ae25-406a-b06c-a60d60711d0a
+
+	measure 'KPI Error %' = DIVIDE ( ABS ( [KPI Error NOK] ), [Truth Value NOK] )
+		formatString: 0.00%
+		displayFolder: KPI error versus the truth
+		lineageTag: f39282ca-c6a2-4834-a10f-bc5f6e7faf93
+
+	measure 'KPI Cells Wrong %' =
+			VAR TruthCells =
+			    SUMMARIZE ( 'Truth Monthly', 'Truth Monthly'[report_month], 'Truth Monthly'[category_code], 'Truth Monthly'[region] )
+			VAR Compared =
+			    ADDCOLUMNS (
+			        TruthCells,
+			        "@truth", CALCULATE ( SUM ( 'Truth Monthly'[value_nok] ) ),
+			        "@report",
+			            CALCULATE (
+			                SUM ( MART_MONTHLY_CATEGORY_REGION[value_nok] ),
+			                TREATAS ( { 'Truth Monthly'[report_month] }, MART_MONTHLY_CATEGORY_REGION[report_month] ),
+			                TREATAS ( { 'Truth Monthly'[category_code] }, MART_MONTHLY_CATEGORY_REGION[category_code] ),
+			                TREATAS ( { 'Truth Monthly'[region] }, MART_MONTHLY_CATEGORY_REGION[region] )
+			            )
+			    )
+			VAR Wrong =
+			    COUNTROWS ( FILTER ( Compared, ABS ( [@report] - [@truth] ) > 0.005 ) )
+			RETURN
+			    DIVIDE ( Wrong + 0, COUNTROWS ( TruthCells ) )
+		formatString: 0.0%
+		displayFolder: KPI error versus the truth
+		lineageTag: 972e9916-5f10-4da6-9afc-e8de5afeac06
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: b0b9de89-e334-44a4-bee2-af8bc1ebce01
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Bank Measures' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Column1 = text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "late_data_lab_bank_report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f470ea88-cd59-4475-804b-a9d8c04a89c0"
+  }
+}

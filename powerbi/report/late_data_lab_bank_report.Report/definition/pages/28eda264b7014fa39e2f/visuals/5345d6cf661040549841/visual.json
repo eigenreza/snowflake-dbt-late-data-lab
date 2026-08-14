@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "5345d6cf661040549841",
+  "position": {
+    "x": 1260,
+    "y": 320,
+    "z": 7,
+    "height": 720,
+    "width": 620,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_DATE"
+                    }
+                  },
+                  "Property": "year_month"
+                }
+              },
+              "queryRef": "DIM_DATE.year_month",
+              "nativeQueryRef": "year_month"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Report Value NOK"
+                }
+              },
+              "queryRef": "Bank Measures.Report Value NOK",
+              "nativeQueryRef": "Report Value NOK"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "Truth Value NOK"
+                }
+              },
+              "queryRef": "Bank Measures.Truth Value NOK",
+              "nativeQueryRef": "Truth Value NOK"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "KPI Error NOK"
+                }
+              },
+              "queryRef": "Bank Measures.KPI Error NOK",
+              "nativeQueryRef": "KPI Error NOK"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Bank Measures"
+                    }
+                  },
+                  "Property": "KPI Error %"
+                }
+              },
+              "queryRef": "Bank Measures.KPI Error %",
+              "nativeQueryRef": "KPI Error %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DIM_DATE"
+                  }
+                },
+                "Property": "year_month"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Error by month'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

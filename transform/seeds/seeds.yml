@@ -1,0 +1,39 @@
+version: 2
+
+seeds:
+  - name: merchant_categories
+    description: Merchant category codes used by the core system, with a readable name and a reporting group.
+    config:
+      column_types:
+        category_code: varchar
+    columns:
+      - name: category_code
+        description: Four-digit merchant category code, the business key.
+        data_tests: [unique, not_null]
+      - name: category_name
+        description: Readable category name.
+        data_tests: [not_null]
+      - name: category_group
+        description: Coarser grouping for reports.
+        data_tests: [not_null]
+
+  - name: currencies
+    description: Currencies that occur in the ledger. NOK is the home currency; the others are converted with Norges Bank rates.
+    columns:
+      - name: currency_code
+        description: ISO 4217 code, the business key.
+        data_tests: [unique, not_null]
+      - name: currency_name
+        data_tests: [not_null]
+      - name: is_home_currency
+        description: True for NOK only.
+
+  - name: regions
+    description: Norwegian counties (the customer regions) and the larger area each belongs to.
+    columns:
+      - name: region
+        description: County name as used in the customer data, the business key.
+        data_tests: [unique, not_null]
+      - name: area
+        description: Larger area, for grouping regions in reports.
+        data_tests: [not_null]

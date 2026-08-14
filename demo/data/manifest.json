@@ -1,0 +1,120 @@
+{
+  "scenarios": {
+    "heavy": {
+      "seed": 20232,
+      "period_start": "2023-01-01",
+      "initial_extract_date": "2024-11-30",
+      "last_day": "2024-12-30",
+      "replay_days": 30,
+      "customers": 3000,
+      "accounts": 5098,
+      "merchants": 1658,
+      "transactions_booked": 1410923,
+      "transaction_versions": 1469388,
+      "late_share": 0.334990640878347,
+      "correction_share": 0.03184015002944881,
+      "customer_changes": 1069
+    },
+    "mild": {
+      "seed": 20231,
+      "period_start": "2023-01-01",
+      "initial_extract_date": "2024-11-30",
+      "last_day": "2024-12-30",
+      "replay_days": 30,
+      "customers": 3000,
+      "accounts": 5119,
+      "merchants": 1658,
+      "transactions_booked": 1414717,
+      "transaction_versions": 1429543,
+      "late_share": 0.10081097491583123,
+      "correction_share": 0.008045425339484859,
+      "customer_changes": 1000
+    }
+  },
+  "bank_scenario": "mild",
+  "bank": {
+    "fact_rows": 1421275,
+    "as_of": "2024-12-30",
+    "balance_rows": 3369308,
+    "customer_versions": 3043,
+    "customer_changes_seen": 43
+  },
+  "dbt_tests": {
+    "tests": 132,
+    "passed": 132
+  },
+  "cost_basis": {
+    "column": "credits_with_minimum",
+    "label": "estimated Snowflake credits (execution time plus the 60-second minimum per resume)",
+    "engine": "snowflake"
+  },
+  "kpis": [
+    "daily_balance",
+    "monthly_category_region",
+    "fx_daily"
+  ],
+  "strategies": [
+    {
+      "run_key": "full_refresh",
+      "strategy": "full_refresh",
+      "lookback_days": 0,
+      "label": "full refresh"
+    },
+    {
+      "run_key": "append_only",
+      "strategy": "append_only",
+      "lookback_days": 0,
+      "label": "append-only"
+    },
+    {
+      "run_key": "merge_w0",
+      "strategy": "merge",
+      "lookback_days": 0,
+      "label": "merge (W=0)"
+    },
+    {
+      "run_key": "merge_w1",
+      "strategy": "merge",
+      "lookback_days": 1,
+      "label": "merge (W=1)"
+    },
+    {
+      "run_key": "merge_w3",
+      "strategy": "merge",
+      "lookback_days": 3,
+      "label": "merge (W=3)"
+    },
+    {
+      "run_key": "merge_w7",
+      "strategy": "merge",
+      "lookback_days": 7,
+      "label": "merge (W=7)"
+    },
+    {
+      "run_key": "delete_insert_w0",
+      "strategy": "delete_insert",
+      "lookback_days": 0,
+      "label": "delete+insert (W=0)"
+    },
+    {
+      "run_key": "delete_insert_w1",
+      "strategy": "delete_insert",
+      "lookback_days": 1,
+      "label": "delete+insert (W=1)"
+    },
+    {
+      "run_key": "delete_insert_w3",
+      "strategy": "delete_insert",
+      "lookback_days": 3,
+      "label": "delete+insert (W=3)"
+    },
+    {
+      "run_key": "delete_insert_w7",
+      "strategy": "delete_insert",
+      "lookback_days": 7,
+      "label": "delete+insert (W=7)"
+    }
+  ],
+  "tolerance_nok": 0.005,
+  "repo_url": "https://github.com/eigenreza/snowflake-dbt-late-data-lab"
+}

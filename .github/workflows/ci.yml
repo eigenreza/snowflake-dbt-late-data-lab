@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: dbt profile (DuckDB only, no credentials)
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<'EOF'
+          late_data_lab:
+            target: dev
+            outputs:
+              dev:
+                type: duckdb
+                path: "{{ env_var('LDL_DUCKDB_PATH', 'data/late_data_lab.duckdb') }}"
+                schema: staging
+                threads: 4
+          EOF
+          dbt deps --project-dir transform
+
+      - name: Unit and integration tests
+        run: python -m pytest -q
+
+      - name: Small end-to-end run on DuckDB
+        run: |
+          python -m generator.build_core_bank --customers 200
+          python -m extract.extract_core --day 2024-11-30
+          python -m legacy.run_nightly_report --run-date 2024-11-30 --full
+          for i in 1 2 3; do
+            python -m generator.advance_day --next
+            python -m extract.extract_core --next
+            python -m legacy.run_nightly_report --run-date $(python -c "import duckdb; print(duckdb.connect('onprem/core_bank.duckdb', read_only=True).execute(\"select max(run_day) from etl_control.extract_runs\").fetchall()[0][0])")
+          done
+          python -m load.load_duckdb
+          dbt build --project-dir transform --target dev
+          python -m reconcile.reconcile --mode both
+
+      - name: Correctness checks that do not depend on the engine
+        run: python -m experiment.run --scenarios mild --customers 200 --cycles 2 --strategies full_refresh,append_only,merge_w3 --out /tmp/ci-results
